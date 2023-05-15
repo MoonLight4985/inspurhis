@@ -29,7 +29,7 @@
         <property name="dataSource" ref="dataSource"></property>
         <property name="configLocation" value="classpath:mybatis-config.xml"></property>
         <property name="typeAliasesPackage" value="com.inspur.bean"></property>
-        <property name="mapperLocations" value="classpath:mapper/*.xml"></property>
+<!--        <property name="mapperLocations" value="classpath:mapper/*.xml"></property>-->
         <property name="plugins">
             <list>
                 <bean class="com.github.pagehelper.PageInterceptor">
