@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!--注解扫描-->
+    <context:component-scan base-package="com.inspur">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    <!--加载数据库配置文件-->
+    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
+    <!--配置数据源,使用阿里巴巴的数据源-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="maxActive" value="100"/>
+        <property name="minIdle" value="10"/>
+    </bean>
+    <!--配置mybatis的SqlSessionFactory-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+        <property name="typeAliasesPackage" value="com.inspur.bean"></property>
+        <property name="mapperLocations" value="classpath:mapper/*.xml"></property>
+        <property name="plugins">
+            <list>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <value>
+                            helperDialect=mysql
+                        </value>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+    <!--配置mybatis的组件扫描-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!-- 扫描包路径，如果需要扫描多个包，中间使用半角逗号隔开 -->
+        <property name="basePackage" value="com.inspur.mapper"></property>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+
+    </bean>
+
+    <!--事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!--注解的事务-->
+    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+
+</beans>
