@@ -16,5 +16,5 @@ public class Depart {
 
     private String userId;
 
-    private Date createTime;
+    private String createTime;
 }

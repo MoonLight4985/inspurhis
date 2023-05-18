@@ -11,6 +11,7 @@ import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class DepartServiceImpl implements DepartService {
     @Override
     public boolean saveOrUpdateDepart(Depart depart) {
         String departId = depart.getId();
-        if (departId == null) {
+        if (findDepartById(departId) == null) {
             return save(depart);
         } else {
             return update(depart);
@@ -30,9 +31,11 @@ public class DepartServiceImpl implements DepartService {
     }
 
     boolean save(Depart depart) {
-        String id = new DateTime().toString("yyyyMMddHHmmss");
-        depart.setId(id);
-        depart.setCreateTime(new Date());
+//        String id = new DateTime().toString("yyyyMMddHHmmss");
+//        depart.setId(id);
+        depart.setUserId("34234");
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        depart.setCreateTime(simpleDateFormat.format(new Date()));
         return departMapper.save(depart) > 0;
     }
 

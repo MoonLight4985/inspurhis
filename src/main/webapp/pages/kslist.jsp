@@ -22,7 +22,7 @@
         }
 
         function modify(id) {
-            window.location.href = "ksadd.html";
+            window.location.href = "${pageContext.request.contextPath}/depart/findDepartById?id=" + id;
         }
     </script>
     <style type="text/css">
@@ -48,7 +48,7 @@
         </div>
     </form>
     <div class="pageColumn">
-        <div class="pageButton"><a href="${pageContext.request.contextPath}/ksadd.jsp"><img src="../images/t01.png"
+        <div class="pageButton"><a href="${pageContext.request.contextPath}/pages/ksadd.jsp"><img src="../images/t01.png"
                                                                                             title="新增"/></a><span>科室列表</span>
         </div>
         <table>
@@ -67,7 +67,7 @@
                     <td>${depart.userId}</td>
                     <td>${depart.createTime}</td>
                     <td>
-                        <a onclick="modify(id)"><img src="../images/icon/edit.png" width="16" height="16"/></a>
+                        <a onclick="modify(${depart.id})"><img src="../images/icon/edit.png" width="16" height="16"/></a>
                         <a onclick="deletes(${depart.id})"><img src="../images/icon/del.png" width="16" height="16"/></a>
                     </td>
                 </tr>
