@@ -51,7 +51,21 @@ public class MedicineController {
     public String findUserById(String id, HttpServletRequest request) {
         Medicine medicine = medicineService.findMedicineById(id);
         request.setAttribute("medicine", medicine);
-        System.out.println(medicine);
         return "ypadd";
+    }
+
+    @GetMapping("increase")
+    public String increase(String id, HttpServletRequest request) {
+        Medicine medicine = medicineService.findMedicineById(id);
+        request.getSession().setAttribute("czMedicine", medicine);
+        return "ypcz";
+    }
+
+    @PostMapping("saveIncrease")
+    public String saveIncrease(Integer num, String id, HttpServletRequest request) {
+        Medicine medicine = (Medicine) request.getSession().getAttribute("czMedicine");
+        medicine.setNumber(medicine.getNumber() + num);
+        boolean b = medicineService.saveOrUpdateMedicine(medicine);
+        return "redirect:/medicine/list";
     }
 }

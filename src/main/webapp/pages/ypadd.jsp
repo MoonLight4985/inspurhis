@@ -41,7 +41,7 @@
 </head>
 
 <body>
-<form method="post" action="${pageContext.request.contextPath}/medicine/save" method="post" name="ThisForm">
+<form action="${pageContext.request.contextPath}/medicine/save" method="post" name="ThisForm">
   <div id="contentWrap">
     <!--表格控件 -->
     <div id="widget table-widget">
