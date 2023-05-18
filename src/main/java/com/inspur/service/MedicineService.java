@@ -10,4 +10,6 @@ public interface MedicineService {
     boolean saveOrUpdateMedicine(Medicine medicine);
 
     boolean deleteByMedicineId(String id);
+
+    Medicine findMedicineById(String id);
 }

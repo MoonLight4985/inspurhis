@@ -29,13 +29,24 @@ public class MedicineServiceImpl implements MedicineService {
 
     @Override
     public boolean saveOrUpdateMedicine(Medicine medicine) {
-        return save(medicine);
+        Medicine select = findMedicineById(medicine.getId());
+        if (select == null) {
+            return save(medicine);
+        } else {
+            return update(medicine);
+        }
     }
 
     @Override
     public boolean deleteByMedicineId(String id) {
         boolean b = medicineMapper.deleteByMedicineId(id);
         return b;
+    }
+
+    @Override
+    public Medicine findMedicineById(String id) {
+        Medicine medicine = medicineMapper.findUsersById(id);
+        return medicine;
     }
 
     boolean save(Medicine medicine) {

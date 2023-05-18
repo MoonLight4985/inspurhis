@@ -50,33 +50,33 @@
         <table>
           <tr>
             <td width="20%" align="right">药品ID</td>
-            <td width="20%"><input type="text" id="drugsid" name="id" /></td>
+            <td width="20%"><input type="text" id="id" name="id" value="${medicine.id}"/></td>
             <td width="10%" align="right"></td>
             <td width="50%"></td>
           </tr>
           <tr>
             <td width="20%" align="right">药品名</td>
-            <td width="20%"><input type="text" id="name" name="name" /></td>
+            <td width="20%"><input type="text" id="name" name="name" value="${medicine.name}"/></td>
             <td width="10%" align="right">进价</td>
-            <td width="50%"><input type="text" id="purchaseprice" name="purchasePrice" /></td>
+            <td width="50%"><input type="text" id="purchaseprice" name="purchasePrice" value="${medicine.purchasePrice}"/></td>
           </tr>
           <tr>
             <td width="20%" align="right">售价</td>
-            <td width="20%"><input type="text" id="price" name="price" /></td>
+            <td width="20%"><input type="text" id="price" name="price" value="${medicine.price}"/></td>
             <td width="10%" align="right">库存数量</td>
-            <td width="50%"><input type="text" id="num" name="number" /></td>
+            <td width="50%"><input type="text" id="num" name="number" value="${medicine.number}"/></td>
           </tr>
           <tr>
             <td width="20%" align="right">生产厂商</td>
-            <td width="20%"><input type="text" id="productunit" name="productUnit" /></td>
+            <td width="20%"><input type="text" id="productunit" name="productUnit" value="${medicine.productUnit}"/></td>
             <td width="10%" align="right">生产日期</td>
-            <td width="50%"><input type="date" id="productdate" name="productDate" onClick="SelectDate(this.name)"/></td>
+            <td width="50%"><input type="date" id="productdate" name="productDate" onClick="SelectDate(this.name)" value="${medicine.productDate}"/></td>
           </tr>
           <tr>
             <td width="20%" align="right">保质期</td>
-            <td width="20%"><input type="date" id="qualityperiod" name="qualityPeriod" onClick="SelectDate(this.name)"/></td>
+            <td width="20%"><input type="date" id="qualityperiod" name="qualityPeriod" onClick="SelectDate(this.name)" value="${medicine.qualityPeriod}"/></td>
             <td width="10%" align="right">经销商</td>
-            <td width="50%"><input type="text" id="supplyunit" name="supplyUnit" /></td>
+            <td width="50%"><input type="text" id="supplyunit" name="supplyUnit" value="${medicine.supplyUnit}"/></td>
           </tr>
           <tr>
             <td colspan="4" align="center"><input type="submit" value="确定" /></td>

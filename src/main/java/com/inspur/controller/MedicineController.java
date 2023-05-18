@@ -2,7 +2,7 @@ package com.inspur.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.inspur.entity.Medicine;
-import com.inspur.entity.Users;
+import com.inspur.entity.Medicine;
 import com.inspur.service.MedicineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +20,7 @@ public class MedicineController {
     private MedicineService medicineService;
 
     @GetMapping("list")
-    public String getUsersByCondition(Medicine medicine,
+    public String getMedicineByCondition(Medicine medicine,
                                       HttpServletRequest request,
                                       @RequestParam(defaultValue = "1") Integer pageNum,
                                       @RequestParam(defaultValue = "5") Integer pageSize) {
@@ -35,6 +35,7 @@ public class MedicineController {
         if (updateMedicine != null) {
             medicine.setId(updateMedicine.getId());
         }
+        System.out.println("cang" + medicine);
         boolean flag = medicineService.saveOrUpdateMedicine(medicine);
 
         return "redirect:/medicine/list";
@@ -44,5 +45,13 @@ public class MedicineController {
     public String deleteByMedicineId(String id) {
         boolean flag = medicineService.deleteByMedicineId(id);
         return "redirect:/medicine/list";
+    }
+
+    @GetMapping("findMedicineById")
+    public String findUserById(String id, HttpServletRequest request) {
+        Medicine medicine = medicineService.findMedicineById(id);
+        request.setAttribute("medicine", medicine);
+        System.out.println(medicine);
+        return "ypadd";
     }
 }

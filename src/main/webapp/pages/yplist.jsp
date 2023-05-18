@@ -22,7 +22,7 @@
         }
 
         function modify(id) {
-            window.location.href = "ypadd.html";
+            window.location.href = "${pageContext.request.contextPath}/medicine/findMedicineById?id=" + id;
         }
 
         function cz(id) {
@@ -101,7 +101,7 @@
                     <td>${medicine.qualityPeriod}</td>
                     <td>${medicine.supplyUnit}</td>
                     <td>
-                        <a onclick="modify(id)"><img src="../images/icon/edit.png" width="16" height="16"/></a>
+                        <a onclick="modify(${medicine.id})"><img src="../images/icon/edit.png" width="16" height="16"/></a>
                         <a onclick="deletes(${medicine.id})"><img src="../images/icon/del.png" width="16" height="16"/></a>
                     </td>
                     <td>
