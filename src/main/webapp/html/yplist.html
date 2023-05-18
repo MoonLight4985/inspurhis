@@ -15,25 +15,25 @@ function deletes(id){
 function modify(id){
 	 window.location.href="ypadd.html";
 	}
-	
+
 function cz(id){
 	 window.location.href="ypcz.html";
 	}
 	$(function(){
 		$('tbody tr:odd').addClass("trLight");
-		
+
 		$(".select-all").click(function(){
 			if($(this).attr("checked")){
 				$(".checkBox input[type=checkbox]").each(function(){
-					$(this).attr("checked", true);  
+					$(this).attr("checked", true);
 					});
 				}else{
 					$(".checkBox input[type=checkbox]").each(function(){
-					$(this).attr("checked", false);  
+					$(this).attr("checked", false);
 					});
 				}
 			});
-		
+
 		});
 </script>
 <style type="text/css">
@@ -84,31 +84,12 @@ body {
             <td>2012-12-20</td>
             <td>2019-12-20</td>
             <td>海康经销有限公司</td>
-            <td> 
-             <a onclick="modify(id)"><img src="../images/icon/edit.png" width="16" height="16" /></a> 
-            <a onclick="deletes(id)"><img src="../images/icon/del.png" width="16" height="16" /></a> 
+            <td>
+             <a onclick="modify(id)"><img src="../images/icon/edit.png" width="16" height="16" /></a>
+            <a onclick="deletes(id)"><img src="../images/icon/del.png" width="16" height="16" /></a>
             </td>
-            <td> 
-            <a onclick="cz(id)"><img src="../images/icon/edit2.png" width="16" height="16" /></a> 
-            </td>
-          </tr>
-          <tr>
-            <td>123456</td>
-            <td>皮炎平</td>
-            <td>10</td>
-            <td>20</td>
-            <td><font color="red">199</font></td>
-            <td>2012-12-20</td>
-            <td>齐鲁制药</td>
-            <td>2012-12-20</td>
-            <td>2019-12-20</td>
-            <td>海康经销有限公司</td>
-            <td> 
-             <a onclick="modify(id)"><img src="../images/icon/edit.png" width="16" height="16" /></a> 
-            <a onclick="deletes(id)"><img src="../images/icon/del.png" width="16" height="16" /></a> 
-            </td>
-            <td> 
-            <a onclick="cz(id)"><img src="../images/icon/edit2.png" width="16" height="16" /></a> 
+            <td>
+            <a onclick="cz(id)"><img src="../images/icon/edit2.png" width="16" height="16" /></a>
             </td>
           </tr>
           <tr>
@@ -122,12 +103,31 @@ body {
             <td>2012-12-20</td>
             <td>2019-12-20</td>
             <td>海康经销有限公司</td>
-            <td> 
-             <a onclick="modify(id)"><img src="../images/icon/edit.png" width="16" height="16" /></a> 
-            <a onclick="deletes(id)"><img src="../images/icon/del.png" width="16" height="16" /></a> 
+            <td>
+             <a onclick="modify(id)"><img src="../images/icon/edit.png" width="16" height="16" /></a>
+            <a onclick="deletes(id)"><img src="../images/icon/del.png" width="16" height="16" /></a>
             </td>
-            <td> 
-            <a onclick="cz(id)"><img src="../images/icon/edit2.png" width="16" height="16" /></a> 
+            <td>
+            <a onclick="cz(id)"><img src="../images/icon/edit2.png" width="16" height="16" /></a>
+            </td>
+          </tr>
+          <tr>
+            <td>123456</td>
+            <td>皮炎平</td>
+            <td>10</td>
+            <td>20</td>
+            <td><font color="red">199</font></td>
+            <td>2012-12-20</td>
+            <td>齐鲁制药</td>
+            <td>2012-12-20</td>
+            <td>2019-12-20</td>
+            <td>海康经销有限公司</td>
+            <td>
+             <a onclick="modify(id)"><img src="../images/icon/edit.png" width="16" height="16" /></a>
+            <a onclick="deletes(id)"><img src="../images/icon/del.png" width="16" height="16" /></a>
+            </td>
+            <td>
+            <a onclick="cz(id)"><img src="../images/icon/edit2.png" width="16" height="16" /></a>
             </td>
           </tr>
         </tbody>

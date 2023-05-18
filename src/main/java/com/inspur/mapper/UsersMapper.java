@@ -8,7 +8,7 @@ import java.util.List;
 @Mapper // 表示映射接口，交给 Spring 管理
 public interface UsersMapper {
 
-    @Insert("insert into users (id, username, password, role, realname, tel, age, address, create_time, update_time) values (#{id}, #{username}, #{password}, #{role}, #{realname}, #{tel}, #{age}, #{address}, #{createTime}, #{updateTime})")
+    @Insert("insert into users (id, username, password, role, realname, tel, age, address, create_time, update_time, introduce_date) values (#{id}, #{username}, #{password}, #{role}, #{realname}, #{tel}, #{age}, #{address}, #{createTime}, #{updateTime}, #{introduceDate})")
     int save(Users users);
 
     List<Users> findUsersByCondition(Users users);
