@@ -1,15 +1,8 @@
 package com.inspur.mapper;
 
-import com.github.pagehelper.PageInfo;
 import com.inspur.entity.Doctor;
-import com.inspur.service.DoctorService;
 import org.apache.ibatis.annotations.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Mapper

@@ -79,7 +79,7 @@
                     <li><a href="${pageContext.request.contextPath}/medicine/list" target="right">药品信息管理</a></li>
                     <li><a href="${pageContext.request.contextPath}/doctor/list" target="right">医生管理</a></li>
                     <li><a href="ypfflist.html" target="right">药品发放</a></li>
-                    <li><a href="kslist.html" target="right">科室管理</a></li>
+                    <li><a href="${pageContext.request.contextPath}/depart/list" target="right">科室管理</a></li>
                     <li><a href="memberlist.html" target="right">会员管理</a></li><!-- 挂号人员独有 -->
                     <li><a href="yyghadd.html" target="right">预约挂号</a></li>
                     <li><a href="ghlist.html" target="right">挂号管理</a></li>
