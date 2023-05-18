@@ -18,7 +18,7 @@
     <script type="text/javascript">
 
         function deletes(id) {
-            window.location.href = "yplist.html";
+            window.location.href = "${pageContext.request.contextPath}/medicine/deleteByMedicineId?id=" + id;
         }
 
         function modify(id) {
@@ -102,7 +102,7 @@
                     <td>${medicine.supplyUnit}</td>
                     <td>
                         <a onclick="modify(id)"><img src="../images/icon/edit.png" width="16" height="16"/></a>
-                        <a onclick="deletes(id)"><img src="../images/icon/del.png" width="16" height="16"/></a>
+                        <a onclick="deletes(${medicine.id})"><img src="../images/icon/del.png" width="16" height="16"/></a>
                     </td>
                     <td>
                         <a onclick="cz(id)"><img src="../images/icon/edit2.png" width="16" height="16"/></a>
