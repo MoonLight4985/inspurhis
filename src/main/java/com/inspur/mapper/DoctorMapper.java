@@ -23,7 +23,7 @@ public interface DoctorMapper {
     @Select("select * from doctor where id = #{id}")
     Doctor findDoctorById(String id);
 
-    @Insert("insert into doctor (id, name, password, role, realname, depart_id, postional, sex, age, tel, create_time) values (#{id}, #{name}, #{password}, #{role}, #{realname}, #{departId}, #{postional}, #{sex}, #{age}, #{tel}, #{createTime})")
+    @Insert("insert into doctor (id, name, password, role, realname, depart_id, positional, sex, age, tel, create_time) values (#{id}, #{name}, #{password}, #{role}, #{realname}, #{departId}, #{positional}, #{sex}, #{age}, #{tel}, #{createTime})")
     int save(Doctor doctors);
 
     int update(Doctor doctors);

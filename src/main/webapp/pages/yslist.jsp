@@ -19,11 +19,11 @@
     <script type="text/javascript" src="../js/select-ui.min.js"></script>
     <script type="text/javascript">
         function deletes(id) {
-            window.location.href = "yslist.html";
+            window.location.href = "${pageContext.request.contextPath}/doctor/deleteByDoctorId?id=" + id;
         }
 
         function modify(id) {
-            window.location.href = "ysadd.html";
+            window.location.href = "${pageContext.request.contextPath}/doctor/findDoctorById?id=" + id;
         }
 
         $(function () {
@@ -73,7 +73,7 @@
         </div>
     </form>
     <div class="pageColumn">
-        <div class="pageButton"><a href="ysAdd.html"><img src="../images/t01.png" title="新增"/></a><span>医生列表</span>
+        <div class="pageButton"><a href="${pageContext.request.contextPath}/pages/ysadd.jsp"><img src="../images/t01.png" title="新增"/></a><span>医生列表</span>
         </div>
         <table>
             <thead>
@@ -103,8 +103,8 @@
                     <td>${doctor.sex}</td>
                     <td>山东济南历城区</td>
                     <td>
-                        <a onclick="modify(id)"><img src="../images/icon/edit.png" width="16" height="16"/></a>
-                        <a onclick="deletes(id)"><img src="../images/icon/del.png" width="16" height="16"/></a>
+                        <a onclick="modify(${doctor.id})"><img src="../images/icon/edit.png" width="16" height="16"/></a>
+                        <a onclick="deletes(${doctor.id})"><img src="../images/icon/del.png" width="16" height="16"/></a>
                     </td>
                 </tr>
             </c:forEach>
