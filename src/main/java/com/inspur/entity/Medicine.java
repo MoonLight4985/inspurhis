@@ -16,11 +16,11 @@ public class Medicine {
 
     private Integer number;//库存数量
 
-    private Date introduceDate;//引入日期
+    private String introduceDate;//引入日期
 
-    private Date productDate;//生产日期
+    private String productDate;//生产日期
 
-    private Date qualityPeriod;//保质期
+    private String qualityPeriod;//保质期
 
     private String supplyUnit;//供货单位
 

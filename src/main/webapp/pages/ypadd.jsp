@@ -70,11 +70,11 @@
             <td width="20%" align="right">生产厂商</td>
             <td width="20%"><input type="text" id="productunit" name="productUnit" /></td>
             <td width="10%" align="right">生产日期</td>
-            <td width="50%"><input type="text" id="productdate" name="productDate" onClick="SelectDate(this.name)"/></td>
+            <td width="50%"><input type="date" id="productdate" name="productDate" onClick="SelectDate(this.name)"/></td>
           </tr>
           <tr>
             <td width="20%" align="right">保质期</td>
-            <td width="20%"><input type="text" id="qualityperiod" name="qualityPeriod" onClick="SelectDate(this.name)"/></td>
+            <td width="20%"><input type="date" id="qualityperiod" name="qualityPeriod" onClick="SelectDate(this.name)"/></td>
             <td width="10%" align="right">经销商</td>
             <td width="50%"><input type="text" id="supplyunit" name="supplyUnit" /></td>
           </tr>

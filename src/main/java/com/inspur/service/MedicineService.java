@@ -8,4 +8,6 @@ public interface MedicineService {
     PageInfo<Medicine> getMedicineByCondition(Medicine medicine, Integer pageNum, Integer pageSize);
 
     boolean saveOrUpdateMedicine(Medicine medicine);
+
+    boolean deleteByMedicineId(String id);
 }

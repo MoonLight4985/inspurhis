@@ -39,4 +39,10 @@ public class MedicineController {
 
         return "redirect:/medicine/list";
     }
+
+    @GetMapping("deleteByMedicineId")
+    public String deleteByMedicineId(String id) {
+        boolean flag = medicineService.deleteByMedicineId(id);
+        return "redirect:/medicine/list";
+    }
 }

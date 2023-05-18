@@ -117,21 +117,37 @@
         <div id='project_pagination' class="pagination pagination-centered">
             <div class="pagination">
                 <ul>
-                    <li class="disabled"><a href="#">«</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">»</a></li>
+                    <li class="disabled"><a
+                            href="${pageContext.request.contextPath}/medicine/list?pageNum=${pageInfo.isFirstPage?1:pageInfo.prePage}&pageSize=${pageInfo.pageSize}&id=${medicine.id}&name=${medicine.name}">«</a>
+                    </li>
+                    <c:forEach items="${pageInfo.navigatepageNums}" var="nav">
+                        <li class="${pageInfo.pageNum==nav?'active':''}"><a
+                                href="${pageContext.request.contextPath}/medicine/list?pageNum=${nav}&pageSize=${pageInfo.pageSize}&id=${medicine.id}&name=${medicine.name}">${nav}</a>
+                        </li>
+                    </c:forEach>
+
+
+                    <li>
+                        <a href="${pageContext.request.contextPath}/medicine/list?pageNum=${pageInfo.isLastPage?pageInfo.pages:pageInfo.nextPage}&pageSize=${pageInfo.pageSize}&id=${medicine.id}&name=${medicine.name}">»</a>
+                    </li>
                 </ul>
                 <ul>
-                    <li><span>(1-10/38)</span></li>
-                    <li><span>显示条数&nbsp;:&nbsp;</span></li>
+                    <li><span>(${pageInfo.startRow}-${pageInfo.endRow}/${pageInfo.total})</span></li>
+                    <li><span>显示条数&nbsp;:${pageInfo.size}</span></li>
                 </ul>
                 <ul>
-                    <li class="active"><a href="#">10</a></li>
-                    <li class=""><a href="#">30</a></li>
-                    <li class=""><a href="#">50</a></li>
+                    <li class="${pageInfo.pageSize==5?'active':''}"><a
+                            href="${pageContext.request.contextPath}/medicine/list?pageSize=5&id=${medicine.id}&name=${medicine.name}">5</a>
+                    </li>
+                    <li class="${pageInfo.pageSize==10 ?'active':''}"><a
+                            href="${pageContext.request.contextPath}/medicine/list?pageSize=10&id=${medicine.id}&name=${medicine.name}">10</a>
+                    </li>
+                    <li class="${pageInfo.pageSize==15 ?'active':''}"><a
+                            href="${pageContext.request.contextPath}/medicine/list?pageSize=15&id=${medicine.id}&name=${medicine.name}">15</a>
+                    </li>
+                    <li class="${pageInfo.pageSize==20 ?'active':''}"><a
+                            href="${pageContext.request.contextPath}/medicine/list?pageSize=20&id=${medicine.id}&name=${medicine.name}">20</a>
+                    </li>
                 </ul>
             </div>
         </div>

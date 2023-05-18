@@ -10,6 +10,7 @@ import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -31,8 +32,15 @@ public class MedicineServiceImpl implements MedicineService {
         return save(medicine);
     }
 
+    @Override
+    public boolean deleteByMedicineId(String id) {
+        boolean b = medicineMapper.deleteByMedicineId(id);
+        return b;
+    }
+
     boolean save(Medicine medicine) {
-        medicine.setIntroduceDate(new Date());
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
+        medicine.setIntroduceDate(simpleDateFormat.format(new Date()));
         return medicineMapper.save(medicine) > 0;
     }
 
