@@ -61,10 +61,10 @@
             <div class="pageTitle">会员管理</div>
             <div class="querybody">
                 <ul class="seachform">
-                    <li><label>会员ID</label><input name="memberid" type="text" class="scinput"/></li>
-                    <li><label>会员名称</label><input name="name" type="text" class="scinput"/></li>
-                    <li><label>身份证</label><input name="credit" type="text" class="scinput"/></li>
-                    <li><label>电话</label><input name="tel" type="text" class="scinput"/></li>
+                    <li><label>会员ID</label><input name="memberid" type="text" class="scinput" value="${member.id}"/></li>
+                    <li><label>会员名称</label><input name="name" type="text" class="scinput" value="${member.name}"/></li>
+                    <li><label>身份证</label><input name="credit" type="text" class="scinput" value="${member.credit}"/></li>
+                    <li><label>电话</label><input name="tel" type="text" class="scinput" value="${member.tel}"/></li>
                     <li><label>&nbsp;</label><input name="" type="submit" class="scbtn" value="查询"/></li>
                 </ul>
             </div>
@@ -112,30 +112,46 @@
             </tbody>
         </table>
     </div>
-</div><!-- #widget -->
+</div>
+<!-- #widget -->
 <div id="pagination" style="align:right;margin-top:-10px;">
     <div id='project_pagination' class="pagination pagination-centered">
         <div class="pagination">
             <ul>
-                <li class="disabled"><a href="#">«</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">»</a></li>
+                <li class="disabled"><a
+                        href="${pageContext.request.contextPath}/member/list?pageNum=${pageInfo.isFirstPage?1:pageInfo.prePage}&pageSize=${pageInfo.pageSize}&id=${member.id}&name=${member.name}&credit=${member.credit}&tel=${tel}">«</a>
+                </li>
+                <c:forEach items="${pageInfo.navigatepageNums}" var="nav">
+                    <li class="${pageInfo.pageNum==nav?'active':''}"><a
+                            href="${pageContext.request.contextPath}/member/list?pageNum=${nav}&pageSize=${pageInfo.pageSize}&id=${member.id}&name=${member.name}&credit=${member.credit}&tel=${tel}">${nav}</a>
+                    </li>
+                </c:forEach>
+
+
+                <li>
+                    <a href="${pageContext.request.contextPath}/member/list?pageNum=${pageInfo.isLastPage?pageInfo.pages:pageInfo.nextPage}&pageSize=${pageInfo.pageSize}&id=${member.id}&name=${member.name}&credit=${member.credit}&tel=${tel}">»</a>
+                </li>
             </ul>
             <ul>
-                <li><span>(1-10/38)</span></li>
-                <li><span>显示条数&nbsp;:&nbsp;</span></li>
+                <li><span>(${pageInfo.startRow}-${pageInfo.endRow}/${pageInfo.total})</span></li>
+                <li><span>显示条数&nbsp;:${pageInfo.size}</span></li>
             </ul>
             <ul>
-                <li class="active"><a href="#">10</a></li>
-                <li class=""><a href="#">30</a></li>
-                <li class=""><a href="#">50</a></li>
+                <li class="${pageInfo.pageSize==5?'active':''}"><a
+                        href="${pageContext.request.contextPath}/member/list?pageSize=5&id=${member.id}&name=${member.name}&credit=${member.credit}&tel=${tel}">5</a>
+                </li>
+                <li class="${pageInfo.pageSize==10 ?'active':''}"><a
+                        href="${pageContext.request.contextPath}/member/list?pageSize=10&id=${member.id}&name=${member.name}&credit=${member.credit}&tel=${tel}">10</a>
+                </li>
+                <li class="${pageInfo.pageSize==15 ?'active':''}"><a
+                        href="${pageContext.request.contextPath}/member/list?pageSize=15&id=${member.id}&name=${member.name}&credit=${member.credit}&tel=${tel}">15</a>
+                </li>
+                <li class="${pageInfo.pageSize==20 ?'active':''}"><a
+                        href="${pageContext.request.contextPath}/member/list?pageSize=20&id=${member.id}&name=${member.name}&credit=${member.credit}&tel=${tel}">20</a>
+                </li>
             </ul>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>

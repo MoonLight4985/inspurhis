@@ -121,7 +121,8 @@
             </tbody>
         </table>
     </div>
-</div><!-- #widget -->
+</div>
+<!-- #widget -->
 <div id="pagination" style="align:right;margin-top:-10px;">
     <div id='project_pagination' class="pagination pagination-centered">
         <div class="pagination">
@@ -160,7 +161,6 @@
             </ul>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>

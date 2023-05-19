@@ -13,6 +13,12 @@
             <if test="name!=null and name!=''">
                 and name like '%${name}%'
             </if>
+            <if test="credit!=null and credit!=''">
+                and credit like '%${credit}%'
+            </if>
+            <if test="tel!=null and tel!=''">
+                and tel like '%${tel}%'
+            </if>
         </where>
     </select>
 </mapper>
