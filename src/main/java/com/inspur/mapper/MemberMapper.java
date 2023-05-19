@@ -1,17 +1,17 @@
 package com.inspur.mapper;
 
 import com.inspur.entity.Member;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
 @Mapper
 public interface MemberMapper {
 
+    @Insert("insert into member (id, name, password, role, realname, credit, sex, age, tel, balance, anaphylaxis, create_time) values (#{id}, #{name}, #{password}, #{role}, #{realname}, #{credit}, #{sex}, #{age}, #{tel}, #{balance}, #{anaphylaxis}, #{createTime})")
     int save(Member members);
 
+    @Update("")
     int update(Member members);
 
     List<Member> findMemberByCondition(Member member);

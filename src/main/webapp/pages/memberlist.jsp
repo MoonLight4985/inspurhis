@@ -18,11 +18,11 @@
     <script type="text/javascript">
 
         function deletes(id) {
-            window.location.href = "memberlist.html";
+            window.location.href = "${pageContext.request.contextPath}/member/deleteByMemberId?id=" + id;
         }
 
         function modify(id) {
-            window.location.href = "memberadd.html";
+            window.location.href = "${pageContext.request.contextPath}/member/findMemberById?id=" + id;
         }
 
         function cz(id) {
@@ -55,7 +55,7 @@
 
 <body>
 <div id="contentWrap">
-    <form action="${pageContext.request.contextPath}/depart/list" method="get">
+    <form action="${pageContext.request.contextPath}/member/list" method="get">
         <!--表格控件 -->
         <div id="widget table-widget">
             <div class="pageTitle">会员管理</div>
@@ -71,7 +71,7 @@
         </div>
     </form>
     <div class="pageColumn">
-        <div class="pageButton"><a href="${pageContext.request.contextPath}/member/list"><img src="../images/t01.png"
+        <div class="pageButton"><a href="${pageContext.request.contextPath}/pages/memberadd.jsp"><img src="../images/t01.png"
                                                                                               title="新增"/></a><span>会员列表</span>
         </div>
         <table>
@@ -101,8 +101,8 @@
                     <td>${member.anaphylaxis}</td>
                     <td>${member.createTime}</td>
                     <td>
-                        <a onclick="modify(id)"><img src="../images/icon/edit.png" width="16" height="16"/></a>
-                        <a onclick="deletes(id)"><img src="../images/icon/del.png" width="16" height="16"/></a>
+                        <a onclick="modify(${member.id})"><img src="../images/icon/edit.png" width="16" height="16"/></a>
+                        <a onclick="deletes(${member.id})"><img src="../images/icon/del.png" width="16" height="16"/></a>
                     </td>
                     <td>
                         <a onclick="cz(id)"><img src="../images/icon/edit2.png" width="16" height="16"/></a>
