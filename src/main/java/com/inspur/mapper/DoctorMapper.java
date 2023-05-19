@@ -19,5 +19,6 @@ public interface DoctorMapper {
     @Insert("insert into doctor (id, name, password, role, realname, depart_id, positional, sex, age, tel, create_time) values (#{id}, #{name}, #{password}, #{role}, #{realname}, #{departId}, #{positional}, #{sex}, #{age}, #{tel}, #{createTime})")
     int save(Doctor doctors);
 
+    @Update("update doctor set name = #{name}, password = #{password}, realname = #{realname}, depart_id = #{departId}, positional = #{positional}, sex = #{sex}, tel = #{tel}, age = #{age} where id = #{id}")
     int update(Doctor doctors);
 }

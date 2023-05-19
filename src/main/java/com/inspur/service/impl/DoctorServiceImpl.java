@@ -53,7 +53,6 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Override
     public Doctor findDoctorById(String id) {
-        System.out.println(id);
         Doctor doctors = doctorsMapper.findDoctorById(id);
         return doctors;
     }

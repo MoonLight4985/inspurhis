@@ -50,7 +50,7 @@ public class DoctorController {
     public String findDoctorById(String id, HttpServletRequest request) {
         Doctor doctor = doctorService.findDoctorById(id);
         request.setAttribute("doctor", doctor);
-        System.out.println(doctor);
+        System.out.println("save" + doctor);
         return "ysadd";
     }
 }

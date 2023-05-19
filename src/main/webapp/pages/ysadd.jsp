@@ -45,6 +45,12 @@
             <div class="pageInfo">
                 <table>
                     <tr>
+                        <td width="20%" align="right" hidden>医生ID</td>
+                        <td width="20%"><input type="text" id="id" name="id" value="${doctor.id}" hidden/></td>
+                        <td width="10%" align="right"></td>
+                        <td width="50%"></td>
+                    </tr>
+                    <tr>
                         <td width="20%" align="right">医生名</td>
                         <td width="20%"><input type="text" id="name" name="name" value="${doctor.name}"/></td>
                         <td width="10%" align="right">密码</td>

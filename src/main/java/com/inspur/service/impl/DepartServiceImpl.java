@@ -31,8 +31,6 @@ public class DepartServiceImpl implements DepartService {
     }
 
     boolean save(Depart depart) {
-//        String id = new DateTime().toString("yyyyMMddHHmmss");
-//        depart.setId(id);
         depart.setUserId("34234");
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
         depart.setCreateTime(simpleDateFormat.format(new Date()));

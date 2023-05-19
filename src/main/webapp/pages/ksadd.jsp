@@ -49,9 +49,9 @@
         <table>
           <tr>
             <td width="20%" align="right">科室ID</td>
-            <td width="20%"><input type="text" id="names" name="id"/></td>
+            <td width="20%"><input type="text" id="names" name="id" value="${depart.id}"/></td>
             <td width="10%" align="right">科室名称</td>
-            <td width="50%"><input type="text" id="moneys" name="name"/></td>
+            <td width="50%"><input type="text" id="moneys" name="name" value="${depart.name}"/></td>
           </tr>
           <tr>
             <td colspan="4" align="center"><input type="submit" value="确定" /></td>

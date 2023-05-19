@@ -21,6 +21,7 @@ public class DepartController {
     @PostMapping("save")
     public String save(Depart depart, HttpServletRequest request) {
         Depart updateDepart = (Depart) request.getAttribute("depart");
+        System.out.println("session" + updateDepart);
         if (updateDepart != null) {
             depart.setId(updateDepart.getId());
         }
