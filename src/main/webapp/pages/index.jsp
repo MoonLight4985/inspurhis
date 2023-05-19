@@ -62,7 +62,7 @@
         <div class="topright">
             <ul>
                 <li><span><img src="${pageContext.request.contextPath}/images/index-logout.png" class="helpimg"
-                               height="16" width="16"/></span><a href="login.html">注销</a></li>
+                               height="16" width="16"/></span><a href="${pageContext.request.contextPath}/logout">注销</a></li>
                 <li><span><img src="${pageContext.request.contextPath}/images/t07.png" class="helpimg" height="16"
                                width="16"/></span><a href="userpwdupdate.html">修改密码</a></li>
             </ul>
