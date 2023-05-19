@@ -5,7 +5,7 @@
 <mapper namespace="com.inspur.mapper.DoctorDutyMapper">
 
     <select id="findDoctorDutyByCondition" resultType="com.inspur.entity.DoctorDuty">
-        select * from doctor_Duty
+        select * from doctor_duty
         <where>
             <if test="doctorId != null and doctorId != ''">
                 and doctor_id = #{doctorId}
