@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.inspur.entity.DoctorDuty;
 import com.inspur.mapper.DoctorDutyMapper;
 import com.inspur.service.DoctorDutyService;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +49,8 @@ public class DoctorDutyServiceImpl implements DoctorDutyService {
     }
 
     boolean save(DoctorDuty doctorDuty) {
+        String id = new DateTime().toString("yyyyMMddHHmmss");
+        doctorDuty.setId(id);
         return doctorDutyMapper.save(doctorDuty) > 0;
     }
 

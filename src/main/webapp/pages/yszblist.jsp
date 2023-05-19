@@ -19,7 +19,7 @@
     <script type="text/javascript">
 
         function deletes(id){
-            window.location.href="${pageContext.request.contextPath}/doctorduty/deleteByDoctorDutyId?id=" + id;
+            window.location.href="${pageContext.request.contextPath}/doctorDuty/deleteByDoctorDutyId?id=" + id;
         }
         $(function(){
             $('tbody tr:odd').addClass("trLight");
@@ -55,7 +55,7 @@
             </ul>
         </div>
         <div class="pageColumn">
-            <div class="pageButton"><a href="yszbAdd.html"><img src="../images/t01.png" title="新增"/></a><span>医生值班列表</span></div>
+            <div class="pageButton"><a href="${pageContext.request.contextPath}/pages/yszbadd.jsp"><img src="../images/t01.png" title="新增"/></a><span>医生值班列表</span></div>
             <table>
                 <thead>
                 <th width="">值班ID</th>
@@ -64,13 +64,13 @@
                 <th width="10%">操作</th>
                 </thead>
                 <tbody>
-                <c:forEach items="${pageInfo.list}" var="doctorduty">
+                <c:forEach items="${pageInfo.list}" var="doctorDuty">
                     <tr>
-                        <td>${doctorduty.id}</td>
-                        <td>${doctorduty.doctorId}</td>
-                        <td>${doctorduty.workTime}</td>
+                        <td>${doctorDuty.id}</td>
+                        <td>${doctorDuty.doctorId}</td>
+                        <td>${doctorDuty.workTime}</td>
                         <td>
-                            <a onclick="deletes(${doctorduty.id})"><img src="../images/icon/del.png" width="16" height="16" /></a>
+                            <a onclick="deletes(${doctorDuty.id})"><img src="../images/icon/del.png" width="16" height="16" /></a>
                         </td>
                     </tr>
                 </c:forEach>
@@ -78,26 +78,41 @@
                 </tbody>
             </table>
         </div>
-    </div><!-- #widget -->
+    </div>
+    <!-- #widget -->
     <div id="pagination" style="align:right;margin-top:-10px;">
         <div id='project_pagination' class="pagination pagination-centered">
             <div class="pagination">
                 <ul>
-                    <li class="disabled"><a href="#">«</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">»</a></li>
+                    <li class="disabled"><a
+                            href="${pageContext.request.contextPath}/doctorduty/list?pageNum=${pageInfo.isFirstPage?1:pageInfo.prePage}&pageSize=${pageInfo.pageSize}&doctorId=#{doctorDuty.doctorId}&workTime=#{doctorDuty.workTime}">«</a>
+                    </li>
+                    <c:forEach items="${pageInfo.navigatepageNums}" var="nav">
+                        <li class="${pageInfo.pageNum==nav?'active':''}"><a
+                                href="${pageContext.request.contextPath}/doctorduty/list?pageNum=${nav}&pageSize=${pageInfo.pageSize}&doctorId=#{doctorDuty.doctorId}&workTime=#{doctorDuty.workTime}">${nav}</a>
+                        </li>
+                    </c:forEach>
+                    <li>
+                        <a href="${pageContext.request.contextPath}/doctorduty/list?pageNum=${pageInfo.isLastPage?pageInfo.pages:pageInfo.nextPage}&pageSize=${pageInfo.pageSize}&doctorId=#{doctorDuty.doctorId}&workTime=#{doctorDuty.workTime}">»</a>
+                    </li>
                 </ul>
                 <ul>
-                    <li><span>(1-10/38)</span></li>
-                    <li><span>显示条数&nbsp;:&nbsp;</span></li>
+                    <li><span>(${pageInfo.startRow}-${pageInfo.endRow}/${pageInfo.total})</span></li>
+                    <li><span>显示条数&nbsp;:${pageInfo.size}</span></li>
                 </ul>
                 <ul>
-                    <li class="active"><a href="#">10</a></li>
-                    <li class=""><a href="#">30</a></li>
-                    <li class=""><a href="#">50</a></li>
+                    <li class="${pageInfo.pageSize==5?'active':''}"><a
+                            href="${pageContext.request.contextPath}/doctorduty/list?pageSize=5&doctorId=#{doctorDuty.doctorId}&workTime=#{doctorDuty.workTime}">5</a>
+                    </li>
+                    <li class="${pageInfo.pageSize==10 ?'active':''}"><a
+                            href="${pageContext.request.contextPath}/doctorduty/list?pageSize=10&doctorId=#{doctorDuty.doctorId}&workTime=#{doctorDuty.workTime}">10</a>
+                    </li>
+                    <li class="${pageInfo.pageSize==15 ?'active':''}"><a
+                            href="${pageContext.request.contextPath}/doctorduty/list?pageSize=15&doctorId=#{doctorDuty.doctorId}&workTime=#{doctorDuty.workTime}">15</a>
+                    </li>
+                    <li class="${pageInfo.pageSize==20 ?'active':''}"><a
+                            href="${pageContext.request.contextPath}/doctorduty/list?pageSize=20&doctorId=#{doctorDuty.doctorId}&workTime=#{doctorDuty.workTime}">20</a>
+                    </li>
                 </ul>
             </div>
         </div>

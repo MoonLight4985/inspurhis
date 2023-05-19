@@ -34,7 +34,6 @@ public class DoctorDutyController {
         if (updateDoctorDuty != null) {
             doctorDuty.setId(updateDoctorDuty.getId());
         }
-        System.out.println("cang" + doctorDuty);
         boolean flag = doctorDutyService.saveOrUpdateDoctorDuty(doctorDuty);
 
         return "redirect:/doctorduty/list";

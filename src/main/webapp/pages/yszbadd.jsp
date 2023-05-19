@@ -23,7 +23,7 @@
     </style>
 </head>
 <body>
-<form method="post" action="yszblist.html" method="post" name="ThisForm">
+<form action="${pageContext.request.contextPath}/doctorduty/save" method="post" name="ThisForm">
     <div id="contentWrap">
         <!--表格控件 -->
         <div id="widget table-widget">
@@ -32,13 +32,13 @@
                 <table>
                     <tr>
                         <td width="20%" align="right">医生</td>
-                        <td width="20%"><select id="docid" name="docid">
+                        <td width="20%"><select id="docid" name="doctorId">
                             <option value="333333">zhangsan</option>
                             <option value="333333">zhangsan</option>
                             <option value="333333">zhangsan</option>
                         </select></td>
                         <td width="10%" align="right">日期</td>
-                        <td width="50%"><input type="text" id="dutyday" name="dutyday" onClick="SelectDate(this.name)" /> </td>
+                        <td width="50%"><input type="text" id="workTime" name="workTime" onClick="SelectDate(this.name)" /> </td>
                     </tr>
                     <!-- <tr>
                         <td width="20%" align="right">开始时间</td>
