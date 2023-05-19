@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inspur.mapper.DoctorDutyMapper">
+
+    <select id="findDoctorDutyByCondition" resultType="com.inspur.entity.DoctorDuty">
+        select * from doctor_Duty
+        <where>
+            <if test="doctorId != null and doctorId != ''">
+                and doctor_id = #{doctorId}
+            </if>
+            <if test="workTime != null and workTime != ''">
+                and work_time = #{workTime}
+            </if>
+        </where>
+    </select>
+</mapper>
