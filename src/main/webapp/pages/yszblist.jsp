@@ -19,7 +19,7 @@
     <script type="text/javascript">
 
         function deletes(id){
-            window.location.href="yszblist.html";
+            window.location.href="${pageContext.request.contextPath}/doctorduty/deleteByDoctorDutyId?id=" + id;
         }
         $(function(){
             $('tbody tr:odd').addClass("trLight");
