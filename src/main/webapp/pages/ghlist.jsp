@@ -18,7 +18,7 @@
     <script type="text/javascript">
 
         function deletes(id) {
-            window.location.href = "gylist.html";
+            window.location.href = "${pageContext.request.contextPath}/registerorder/deleteByOrderId?id=" + id;
         }
 
         $(function () {
@@ -62,7 +62,7 @@
     </form>
     <!--表格控件 -->
     <div class="pageColumn">
-        <div class="pageButton"><a href="${pageContext.request.contextPath}/registerOrder/save"><img src="../images/t01.png" title="新增"/></a><span>挂号列表</span>
+        <div class="pageButton"><a href="${pageContext.request.contextPath}/pages/ghadd.jsp"><img src="../images/t01.png" title="新增"/></a><span>挂号列表</span>
         </div>
         <table>
             <thead>
@@ -85,7 +85,7 @@
                     <td>${registerOrder.price}</td>
                     <td>${registerOrder.roTime}</td>
                     <td>${registerOrder.optionTime}</td>
-                    <td><a onclick="deletes(id)"><img src="../images/icon/del.png" width="16" height="16"/></a></td>
+                    <td><a onclick="deletes(${registerOrder.id})"><img src="../images/icon/del.png" width="16" height="16"/></a></td>
                 </tr>
             </c:forEach>
 

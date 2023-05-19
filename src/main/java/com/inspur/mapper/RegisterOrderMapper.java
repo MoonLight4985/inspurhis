@@ -10,12 +10,13 @@ public interface RegisterOrderMapper {
 
     List<RegisterOrder> findOrderByCondition(RegisterOrder registerOrder);
 
-    @Delete("delete from order where id = #{id}")
+    @Delete("delete from register_order where id = #{id}")
     boolean deleteByOrderId(String id);
 
-    @Select("select * from order where id = #{id}")
+    @Select("select * from register_order where id = #{id}")
     RegisterOrder findOrderById(String id);
 
+    @Insert("insert into register_order (id, member_id, depart_id, doctor_id, price, ro_time, status, option_time) values (#{id}, #{memberId}, #{departId}, #{doctorId}, #{price}, #{roTime}, #{status}, #{optionTime})")
     int save(RegisterOrder orders);
 
     int update(RegisterOrder orders);

@@ -26,7 +26,7 @@ public class RegisterOrderController {
         }
         boolean flag = registerOrderService.saveOrUpdateOrder(registerOrder);
 
-        return "redirect:/order/list";
+        return "redirect:/registerorder/list";
     }
 
     @GetMapping("list")
@@ -43,7 +43,7 @@ public class RegisterOrderController {
     @GetMapping("deleteByOrderId")
     public String deleteByOrderId(String id) {
         boolean flag = registerOrderService.deleteByOrderId(id);
-        return "redirect:/order/list";
+        return "redirect:/registerorder/list";
     }
 
     @GetMapping("findOrderById")

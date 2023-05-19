@@ -9,6 +9,8 @@ import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -28,6 +30,9 @@ public class RegisterOrderServiceImpl implements RegisterOrderService {
 
     boolean save(RegisterOrder orders) {
         String id = new DateTime().toString("yyyyMMddHHmmss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        orders.setOptionTime(simpleDateFormat.format(new Date()));
+        orders.setStatus("1");
         orders.setId(id);
         return ordersMapper.save(orders) > 0;
     }
