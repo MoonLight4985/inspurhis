@@ -9,6 +9,15 @@
             <if test="id!=null and id!=''">
                 and id= #{id}
             </if>
+            <if test="memberId!=null and memberId!=''">
+                and member_id= #{memberId}
+            </if>
+            <if test="departId!=null and departId!=''">
+                and depart_id = #{departId}
+            </if>
+            <if test="roTime!=null and roTime!=''">
+                and ro_time= #{roTime}
+            </if>
         </where>
     </select>
 </mapper>

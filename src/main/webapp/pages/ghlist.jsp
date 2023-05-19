@@ -46,16 +46,16 @@
 
 <body>
 <div id="contentWrap">
-    <form action="${pageContext.request.contextPath}/registerOrder/list" method="get">
+    <form action="${pageContext.request.contextPath}/registerorder/list" method="get">
         <div id="widget table-widget">
             <div class="pageTitle">挂号管理</div>
             <div class="querybody">
                 <ul class="seachform">
-                    <li><label>挂号号</label><input name="" type="text" class="scinput"/></li>
-                    <li><label>会员ID</label><input name="" type="text" class="scinput"/></li>
-                    <li><label>科室</label><input name="" type="text" class="scinput"/></li>
-                    <li><label>挂号时间</label><input name="" type="text" class="scinput"/></li>
-                    <li><label>&nbsp;</label><input name="" type="submit" class="scbtn" value="查询"/></li>
+                    <li><label>挂号号</label><input name="id" value="${registerOrder.id}" type="text" class="scinput"/></li>
+                    <li><label>会员ID</label><input name="memberId" value="${registerOrder.memberId}" type="text" class="scinput"/></li>
+                    <li><label>科室</label><input name="departId" value="${registerOrder.departId}" type="text" class="scinput"/></li>
+                    <li><label>挂号时间</label><input name="roTime" value="${registerOrder.roTime}" type="text" class="scinput"/></li>
+                    <li><label>&nbsp;</label><input type="submit" class="scbtn" value="查询"/></li>
                 </ul>
             </div>
         </div>
@@ -98,21 +98,37 @@
     <div id='project_pagination' class="pagination pagination-centered">
         <div class="pagination">
             <ul>
-                <li class="disabled"><a href="#">«</a></li>
-                <li class="active"><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">»</a></li>
+                <li class="disabled"><a
+                        href="${pageContext.request.contextPath}/registerorder/list?pageNum=${pageInfo.isFirstPage?1:pageInfo.prePage}&pageSize=${pageInfo.pageSize}&id=${registerorder.id}&memberId=#{registerOrder.memberId}&departId=#{registerOrder.departId}&roTime=#{registerOrder.roTime}">«</a>
+                </li>
+                <c:forEach items="${pageInfo.navigatepageNums}" var="nav">
+                    <li class="${pageInfo.pageNum==nav?'active':''}"><a
+                            href="${pageContext.request.contextPath}/registerorder/list?pageNum=${nav}&pageSize=${pageInfo.pageSize}&id=${registerorder.id}&memberId=#{registerOrder.memberId}&departId=#{registerOrder.departId}&roTime=#{registerOrder.roTime}">${nav}</a>
+                    </li>
+                </c:forEach>
+
+
+                <li>
+                    <a href="${pageContext.request.contextPath}/registerorder/list?pageNum=${pageInfo.isLastPage?pageInfo.pages:pageInfo.nextPage}&pageSize=${pageInfo.pageSize}&id=${registerorder.id}&memberId=#{registerOrder.memberId}&departId=#{registerOrder.departId}&roTime=#{registerOrder.roTime}">»</a>
+                </li>
             </ul>
             <ul>
-                <li><span>(1-10/38)</span></li>
-                <li><span>显示条数&nbsp;:&nbsp;</span></li>
+                <li><span>(${pageInfo.startRow}-${pageInfo.endRow}/${pageInfo.total})</span></li>
+                <li><span>显示条数&nbsp;:${pageInfo.size}</span></li>
             </ul>
             <ul>
-                <li class="active"><a href="#">10</a></li>
-                <li class=""><a href="#">30</a></li>
-                <li class=""><a href="#">50</a></li>
+                <li class="${pageInfo.pageSize==5?'active':''}"><a
+                        href="${pageContext.request.contextPath}/registerorder/list?pageSize=5&id=${registerorder.id}&memberId=#{registerOrder.memberId}&departId=#{registerOrder.departId}&roTime=#{registerOrder.roTime}">5</a>
+                </li>
+                <li class="${pageInfo.pageSize==10 ?'active':''}"><a
+                        href="${pageContext.request.contextPath}/registerorder/list?pageSize=10&id=${registerorder.id}&memberId=#{registerOrder.memberId}&departId=#{registerOrder.departId}&roTime=#{registerOrder.roTime}">10</a>
+                </li>
+                <li class="${pageInfo.pageSize==15 ?'active':''}"><a
+                        href="${pageContext.request.contextPath}/registerorder/list?pageSize=15&id=${registerorder.id}&memberId=#{registerOrder.memberId}&departId=#{registerOrder.departId}&roTime=#{registerOrder.roTime}">15</a>
+                </li>
+                <li class="${pageInfo.pageSize==20 ?'active':''}"><a
+                        href="${pageContext.request.contextPath}/registerorder/list?pageSize=20&id=${registerorder.id}&memberId=#{registerOrder.memberId}&departId=#{registerOrder.departId}&roTime=#{registerOrder.roTime}">20</a>
+                </li>
             </ul>
         </div>
     </div>
