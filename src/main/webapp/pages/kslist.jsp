@@ -40,8 +40,8 @@
             <div class="pageTitle">科室管理</div>
             <div class="querybody">
                 <ul class="seachform">
-                    <li><label>科室ID</label><input name="departid" type="text" class="scinput"/></li>
-                    <li><label>科室名称</label><input name="name" type="text" class="scinput"/></li>
+                    <li><label>科室ID</label><input name="id" type="text" class="scinput" value="${depart.id}"/></li>
+                    <li><label>科室名称</label><input name="name" type="text" class="scinput" value="${depart.name}"/></li>
                     <li><label>&nbsp;</label><input name="" type="submit" class="scbtn" value="查询"/></li>
                 </ul>
             </div>

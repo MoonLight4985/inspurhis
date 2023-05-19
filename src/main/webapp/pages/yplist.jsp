@@ -61,8 +61,8 @@
             <div class="pageTitle">药品管理</div>
             <div class="querybody">
                 <ul class="seachform">
-                    <li><label>药品ID</label><input name="drugsid" type="text" class="scinput"/></li>
-                    <li><label>药品名称</label><input name="name" type="text" class="scinput"/></li>
+                    <li><label>药品ID</label><input name="id" type="text" class="scinput" value="${medicine.id}"/></li>
+                    <li><label>药品名称</label><input name="name" type="text" class="scinput" value="${medicine.name}"/></li>
                     <li><label>&nbsp;</label><input name="" type="submit" class="scbtn" value="查询"/></li>
                 </ul>
             </div>
