@@ -25,7 +25,7 @@ public class Member {
 
     private String tel;
 
-    private String balance;
+    private Integer balance;
 
     private String anaphylaxis;
 

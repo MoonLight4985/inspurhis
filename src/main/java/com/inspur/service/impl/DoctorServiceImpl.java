@@ -20,7 +20,7 @@ public class DoctorServiceImpl implements DoctorService {
     @Override
     public boolean saveOrUpdateDoctor(Doctor doctors) {
         String doctorsId = doctors.getId();
-        if (doctorsId == null) {
+        if (doctorsId == null || doctorsId.equals("")) {
             return save(doctors);
         } else {
             return update(doctors);

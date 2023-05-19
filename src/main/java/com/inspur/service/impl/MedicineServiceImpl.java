@@ -30,7 +30,7 @@ public class MedicineServiceImpl implements MedicineService {
     @Override
     public boolean saveOrUpdateMedicine(Medicine medicine) {
         Medicine select = findMedicineById(medicine.getId());
-        if (select == null) {
+        if (select == null || select.equals("")) {
             return save(medicine);
         } else {
             return update(medicine);

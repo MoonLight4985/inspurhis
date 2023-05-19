@@ -21,6 +21,7 @@ public class MemberController {
     @PostMapping("save")
     public String save(Member member, HttpServletRequest request) {
         Member updateMember = (Member) request.getAttribute("member");
+        System.out.println("cang" + member);
         if (updateMember != null) {
             member.setId(updateMember.getId());
         }
@@ -36,7 +37,6 @@ public class MemberController {
                                        @RequestParam(defaultValue = "5") Integer pageSize) {
         System.out.println(member);
         PageInfo<Member> pageInfo = memberService.getMemberByCondition(member, pageNum, pageSize);
-        System.out.println(pageInfo);
         request.setAttribute("pageInfo", pageInfo);
         return "memberlist";
     }
@@ -50,7 +50,22 @@ public class MemberController {
     public String findMemberById(String id, HttpServletRequest request) {
         Member member = memberService.findMemberById(id);
         request.setAttribute("member", member);
-        System.out.println("save" + member);
         return "memberadd";
+    }
+
+    @GetMapping("increase")
+    public String increase(String id, HttpServletRequest request) {
+        Member member = memberService.findMemberById(id);
+        request.getSession().setAttribute("czMember", member);
+        return "membercz";
+    }
+
+    @PostMapping("saveIncrease")
+    public String saveIncrease(Integer money, HttpServletRequest request) {
+        Member member = (Member) request.getSession().getAttribute("czMember");
+        member.setBalance(member.getBalance() + money);
+        System.out.println(member);
+        boolean b = memberService.saveOrUpdateMember(member);
+        return "redirect:/member/list";
     }
 }

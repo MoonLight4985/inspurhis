@@ -24,7 +24,7 @@ public class UsersServiceImpl implements UsersService {
     @Override
     public boolean saveOrUpdateUser(Users users) {
         String usersId = users.getId();
-        if (usersId == null) {
+        if (usersId == null || usersId.equals("")) {
             return save(users);
         } else {
             return update(users);

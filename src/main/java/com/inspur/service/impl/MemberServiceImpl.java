@@ -21,7 +21,7 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public boolean saveOrUpdateMember(Member member) {
         String membersId = member.getId();
-        if (membersId == null) {
+        if (membersId == null || membersId.equals("")) {
             return save(member);
         } else {
             return update(member);
@@ -33,6 +33,7 @@ public class MemberServiceImpl implements MemberService {
         members.setId(id);
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
         members.setCreateTime(simpleDateFormat.format(new Date()));
+        System.out.println("cang2" + members);
         return membersMapper.save(members) > 0;
     }
 

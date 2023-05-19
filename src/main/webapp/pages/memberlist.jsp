@@ -26,7 +26,7 @@
         }
 
         function cz(id) {
-            window.location.href = "membercz.html";
+            window.location.href = "${pageContext.request.contextPath}/member/increase?id=" + id;
         }
 
         $(function () {
@@ -105,7 +105,7 @@
                         <a onclick="deletes(${member.id})"><img src="../images/icon/del.png" width="16" height="16"/></a>
                     </td>
                     <td>
-                        <a onclick="cz(id)"><img src="../images/icon/edit2.png" width="16" height="16"/></a>
+                        <a onclick="cz(${member.id})"><img src="../images/icon/edit2.png" width="16" height="16"/></a>
                     </td>
                 </tr>
             </c:forEach>
