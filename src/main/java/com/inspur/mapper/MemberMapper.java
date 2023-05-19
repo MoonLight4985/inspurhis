@@ -11,7 +11,7 @@ public interface MemberMapper {
     @Insert("insert into member (id, name, password, role, realname, credit, sex, age, tel, balance, anaphylaxis, create_time) values (#{id}, #{name}, #{password}, #{role}, #{realname}, #{credit}, #{sex}, #{age}, #{tel}, #{balance}, #{anaphylaxis}, #{createTime})")
     int save(Member members);
 
-    @Update("")
+    @Update("update member set name = #{name}, password = #{password}, credit = #{credit}, tel = #{tel}, age = #{age}, sex = #{sex}, anaphylaxis = #{anaphylaxis} where id = #{id}")
     int update(Member members);
 
     List<Member> findMemberByCondition(Member member);

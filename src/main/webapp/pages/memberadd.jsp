@@ -45,43 +45,49 @@
       <div class="pageTitle">会员添加</div>
       <div class="pageInfo">
         <table>
+          <tr hidden>
+            <td width="20%" align="right">会员ID</td>
+            <td width="20%"><input type="text" id="id" name="id" value="${member.id}"/></td>
+          </tr>
           <tr>
             <td width="20%" align="right">会员名称</td>
-            <td width="20%"><input type="text" id="name" name="name"/></td>
+            <td width="20%"><input type="text" id="name" name="name" value="${member.name}"/></td>
             <td width="20%" align="right">会员密码</td>
-            <td width="20%"><input type="password" id="password" name="password"/></td>
+            <td width="20%"><input type="password" id="password" name="password" value="${member.password}"/></td>
           </tr>
           <tr>
             <td width="10%" align="right">身份证</td>
-            <td width="50%"><input type="text" id="credit" name="credit"/></td>
+            <td width="50%"><input type="text" id="credit" name="credit" value="${member.credit}"/></td>
 
             <td width="20%" align="right">电话</td>
-            <td width="50%"><input type="text" id="tel" name="tel"/></td>
+            <td width="50%"><input type="text" id="tel" name="tel" value="${member.tel}"/></td>
           </tr>
-          <tr>
-            <td width="10%" align="right">充值金额</td><!-- 编辑时卡余额不能修改 -->
-            <td width="50%"><input type="text" id="moneys" name="balance"/></td>
+          <c:if test="${member == null}">
+            <tr>
+              <td width="10%" align="right">充值金额</td><!-- 编辑时卡余额不能修改 -->
+              <td width="50%"><input type="text" id="moneys" name="balance"/></td>
 
-            <td width="10%" align="right">充值方式</td>
-            <td width="50%">
-              <select id="type" name="type" >
-                <option value="0">请选择</option>
-                <option value="1">现金</option>
-                <option value="2">刷卡</option>
-                <option value="3">扫码支付</option>
-              </select>
-            </td>
-          </tr>
+              <td width="10%" align="right">充值方式</td>
+              <td width="50%">
+                <select id="type" name="type" >
+                  <option value="0">请选择</option>
+                  <option value="1">现金</option>
+                  <option value="2">刷卡</option>
+                  <option value="3">扫码支付</option>
+                </select>
+              </td>
+            </tr>
+          </c:if>
           <tr>
             <td width="20%" align="right">年龄</td>
-            <td width="20%"><input type="text" id="age" name="age"/></td>
+            <td width="20%"><input type="text" id="age" name="age" value="${member.age}"/></td>
 
             <td width="10%" align="right">性别</td>
-            <td width="50%"><input type="text" id="sex" name="sex"/></td>
+            <td width="50%"><input type="text" id="sex" name="sex" value="${member.sex}"/></td>
           </tr>
           <tr>
             <td width="20%" align="right">过敏史</td>
-            <td width="20%"><input type="text" id="anaphylaxis" name="anaphylaxis"/></td>
+            <td width="20%"><input type="text" id="anaphylaxis" name="anaphylaxis" value="${member.anaphylaxis}"/></td>
             <td></td>
             <td></td>
           </tr>
