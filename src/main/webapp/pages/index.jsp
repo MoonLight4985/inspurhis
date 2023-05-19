@@ -88,7 +88,7 @@
                     <li><a href="${pageContext.request.contextPath}/member/list" target="right">会员管理</a></li>
                     <!-- 挂号人员独有 -->
                     <li><a href="yyghadd.html" target="right">预约挂号</a></li>
-                    <li><a href="ghlist.html" target="right">挂号管理</a></li>
+                    <li><a href="${pageContext.request.contextPath}/registerorder/list" target="right">挂号管理</a></li>
                     <li><a href="yszblist.html" target="right">医生值班管理</a></li>
                     <li><a href="yzlist.html" target="right">医生诊断管理</a></li>
                     <li><a href="settle.html" target="right">费用结算</a></li>
