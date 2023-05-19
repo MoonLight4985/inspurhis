@@ -22,6 +22,15 @@
     <filter-name>EncodingFiter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+<!--  登录过滤器-->
+<!--  <filter>-->
+<!--    <filter-name>loginFilter</filter-name>-->
+<!--    <filter-class>com.inspur.filter.LoginCheckFilter</filter-class>-->
+<!--  </filter>-->
+<!--  <filter-mapping>-->
+<!--    <filter-name>loginFilter</filter-name>-->
+<!--    <url-pattern>/pages/*</url-pattern>-->
+<!--  </filter-mapping>-->
   <!--配置Spring的监听-->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
