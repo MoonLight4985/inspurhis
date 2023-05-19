@@ -33,7 +33,7 @@
         <form action="${pageContext.request.contextPath}/login" method="post" name="ThisForm">
             <div class="content">
                 <div class="field"><label>账　户：</label><input class="username" name="name"  type="text" /></div>
-                <div class="field"><label>密　码：</label><input class="password" name="password"  type="password" /><br /></div>
+                <div class="field"><label>密　码：</label><input class="password" name="password"  type="password" /><br/></div>
                 <div class="yzm-box">
                     <!-- <label>验证码：</label>
                         <img src="image.do" id="yzmimage" align="middle"
