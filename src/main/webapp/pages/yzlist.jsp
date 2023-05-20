@@ -19,7 +19,7 @@
     <script type="text/javascript">
 
         function deletes(id) {
-            window.location.href = "yzlist.html";
+            window.location.href = "${pageContext.request.contextPath}/doctorAdvice/deleteByDoctorAdviceId?id=" + id;
         }
 
         function ky(id) {
@@ -91,8 +91,8 @@
                     <td>${doctorAdvice.createTime}</td>
                     <td>${doctorAdvice.prescription}</td>
                     <td>西药治疗：皮炎平</td>
-                    <td><a onclick="deletes(id)"><img src="../images/icon/del.png" width="16" height="16"/></a></td>
-                    <td><a onclick="ky(id)"><img src="../images/icon/edit2.png" width="16" height="16"/></a></td>
+                    <td><a onclick="deletes(${doctorAdvice.id})"><img src="../images/icon/del.png" width="16" height="16"/></a></td>
+                    <td><a onclick="ky(${doctorAdvice.id})"><img src="../images/icon/edit2.png" width="16" height="16"/></a></td>
                 </tr>
 
             </c:forEach>
