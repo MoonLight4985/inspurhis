@@ -57,9 +57,9 @@
             <div class="pageTitle">医生诊断管理</div>
             <div class="querybody">
                 <ul class="seachform">
-                    <li><label>挂号号</label><input name="" type="text" class="scinput"/></li>
-                    <li><label>会员ID</label><input name="" type="text" class="scinput"/></li>
-                    <li><label>诊断时间</label><input name="yztime" id="yztime" type="text" class="scinput"
+                    <li><label>挂号号</label><input name="registerOrderId" value="${doctorAdvice.registerOrderId}" type="text" class="scinput"/></li>
+                    <li><label>会员ID</label><input name="memberId" value="${doctorAdvice.memberId}" type="text" class="scinput"/></li>
+                    <li><label>诊断时间</label><input name="createTime" value="${doctorAdvice.createTime}" id="createTime" type="text" class="scinput"
                                                   onClick="SelectDate(this.name)"/></li>
                     <li><label>&nbsp;</label><input name="" type="submit" class="scbtn" value="查询"/></li>
                 </ul>
