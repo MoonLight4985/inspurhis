@@ -41,8 +41,7 @@
     </script>
     <script type="text/javascript">
         function back(){
-// 	history.go(-1);
-            window.location.href="yzlist.html";
+            window.location.href="${pageContext.request.contextPath}/doctorduty/list";
         }
 
     </script>
