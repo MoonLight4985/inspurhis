@@ -23,7 +23,7 @@
         }
 
         function ky(id) {
-            window.location.href = "kylist.html";
+            window.location.href = "${pageContext.request.contextPath}/prescribe/list?registerOrderId=" + id;
         }
 
         $(function () {
@@ -92,7 +92,7 @@
                     <td>${doctorAdvice.prescription}</td>
                     <td>西药治疗：皮炎平</td>
                     <td><a onclick="deletes(${doctorAdvice.id})"><img src="../images/icon/del.png" width="16" height="16"/></a></td>
-                    <td><a onclick="ky(${doctorAdvice.id})"><img src="../images/icon/edit2.png" width="16" height="16"/></a></td>
+                    <td><a onclick="ky(${doctorAdvice.registerOrderId})"><img src="../images/icon/edit2.png" width="16" height="16"/></a></td>
                 </tr>
 
             </c:forEach>
