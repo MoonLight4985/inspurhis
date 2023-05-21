@@ -43,4 +43,9 @@ public class PrescribeServiceImpl implements PrescribeService {
         PageInfo<Prescribe> pageInfo = new PageInfo<>(prescribeList);
         return pageInfo;
     }
+
+    @Override
+    public void sendMedicineById(String id) {
+        prescribeMapper.sendMedicineById(id);
+    }
 }

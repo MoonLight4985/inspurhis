@@ -1,10 +1,7 @@
 package com.inspur.mapper;
 
 import com.inspur.entity.Prescribe;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -20,4 +17,7 @@ public interface PrescribeMapper {
     int save(Prescribe prescribe);
 
     List<Prescribe> getPrescribeListByCondition(Prescribe prescribe);
+
+    @Update("update prescribe set status=1 where id = #{id}")
+    void sendMedicineById(String id);
 }

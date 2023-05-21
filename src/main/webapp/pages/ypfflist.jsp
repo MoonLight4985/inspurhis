@@ -18,7 +18,7 @@
   <script type="text/javascript" src="../js/rl.js"></script>
   <script type="text/javascript">
     function ypff(id){
-      window.location.href="ypff.html";
+      window.location.href="${pageContext.request.contextPath}/prescribe/sendMedicineById?id=" + id;
     }
     $(function(){
       $('tbody tr:odd').addClass("trLight");
@@ -73,7 +73,7 @@
             <td></td>
             <td></td>
             <td></td>
-            <td><a onclick="ypff(id)"><img src="../images/icon/edit2.png" width="16" height="16" /></a></td>
+            <td><a onclick="ypff(${prescribe.id})"><img src="../images/icon/edit2.png" width="16" height="16" /></a></td>
           </tr>
         </c:forEach>
 

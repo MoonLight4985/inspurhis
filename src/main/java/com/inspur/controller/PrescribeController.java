@@ -52,4 +52,9 @@ public class PrescribeController {
         return "ypfflist";
     }
 
+    @GetMapping("sendMedicineById")
+    public String sendMedicineById(String id) {
+        prescribeService.sendMedicineById(id);
+        return "redirect:/prescribe/sendList";
+    }
 }

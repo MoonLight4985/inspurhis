@@ -10,6 +10,7 @@
             <if test="registerOrderId != null and registerOrderId != ''">
                 and register_order_id = #{registerOrderId}
             </if>
+            and status = 0
         </where>
     </select>
 </mapper>

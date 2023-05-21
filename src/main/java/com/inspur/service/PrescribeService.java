@@ -14,4 +14,6 @@ public interface PrescribeService {
     boolean save(Prescribe prescribe);
 
     PageInfo<Prescribe> getPrescribeListByCondition(Prescribe prescribe, Integer pageNum, Integer pageSize);
+
+    void sendMedicineById(String id);
 }
