@@ -21,7 +21,6 @@ public class DoctorAdviceController {
     @PostMapping("save")
     public String save(DoctorAdvice doctorAdvice, HttpServletRequest request) {
         DoctorAdvice updateDoctorAdvice = (DoctorAdvice) request.getAttribute("doctorAdvice");
-        System.out.println("cang" + doctorAdvice);
         if (updateDoctorAdvice != null) {
             doctorAdvice.setId(updateDoctorAdvice.getId());
         }

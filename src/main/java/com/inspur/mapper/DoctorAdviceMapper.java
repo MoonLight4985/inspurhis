@@ -16,7 +16,7 @@ public interface DoctorAdviceMapper {
     @Select("select * from doctor_advice where id = #{id}")
     DoctorAdvice findDoctorAdviceById(String id);
 
-    @Insert("insert into doctor_advice (id, register_order_id, member_id, doctor_id, prescription, create_time, status) values (#{id}, #{registerOrderId}, #{memberId}, #{doctorId}, #{prescription}, #{createTime}, #{status}")
+    @Insert("insert into doctor_advice (id, register_order_id, member_id, doctor_id, prescription, create_time, status) values (#{id}, #{registerOrderId}, #{memberId}, #{doctorId}, #{prescription}, #{createTime}, #{status})")
     int save(DoctorAdvice doctorAdvices);
 
     @Update("")

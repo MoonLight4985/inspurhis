@@ -33,7 +33,6 @@ public class DoctorAdviceServiceImpl implements DoctorAdviceService {
         doctorAdvices.setId(id);
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
         doctorAdvices.setCreateTime(simpleDateFormat.format(new Date()));
-        System.out.println("cang2" + doctorAdvices);
         return doctorAdvicesMapper.save(doctorAdvices) > 0;
     }
 
