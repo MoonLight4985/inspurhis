@@ -10,4 +10,5 @@ public interface PrescribeService {
 
     boolean deleteByPrescribeId(String id);
 
+    boolean save(Prescribe prescribe);
 }

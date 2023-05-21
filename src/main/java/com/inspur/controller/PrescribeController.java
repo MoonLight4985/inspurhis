@@ -5,6 +5,8 @@ import com.inspur.service.PrescribeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,5 +29,18 @@ public class PrescribeController {
     public String deleteByPrescribeId(String id, String registerOrderId) {
         boolean flag = prescribeService.deleteByPrescribeId(id);
         return "redirect:/prescribe/list?registerOrderId=" + registerOrderId;
+    }
+
+    @PostMapping("/save")
+    public String savePrescribe(Prescribe prescribe) {
+        prescribeService.save(prescribe);
+        return "redirect:/prescribe/list?registerOrderId=" + prescribe.getRegisterOrderId();
+    }
+
+    @GetMapping("toAdd")
+    public String toAdd(String registerOrderId, String doctorDutyId, HttpServletRequest request) {
+        request.getSession().setAttribute("registerOrderId", registerOrderId);
+        request.getSession().setAttribute("doctorDutyId", doctorDutyId);
+        return "yzkyadd";
     }
 }

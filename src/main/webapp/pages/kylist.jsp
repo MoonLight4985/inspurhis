@@ -19,9 +19,9 @@
         function deletes(id, orderid){
             window.location.href="${pageContext.request.contextPath}/prescribe/deleteByPrescribeId?id=" + id + "&registerOrderId=" + orderid;
         }
-        function ky(){
+        function ky(orderid, dutyId){
 <%--// 	var yzid = '<%=yzid%>';--%>
-            window.location.href="yzkyadd.html";
+            window.location.href="${pageContext.request.contextPath}/prescribe/toAdd?registerOrderId=" + orderid + "&doctorDutyId=" + dutyId;
         }
         $(function(){
             $('tbody tr:odd').addClass("trLight");
@@ -78,7 +78,7 @@
                         <td><a onclick="deletes(${ky.id}, ${ky.registerOrderId})"><img src="../images/icon/del.png" width="16" height="16" /></a></td>
                     </tr>
                 </c:forEach>
-                <tr><td colspan="6"><input type="button" onclick="ky()" value="新增药品"/>&nbsp;<input type="button" value="返回" onclick="back()"/> </td></tr>
+                <tr><td colspan="6"><input type="button" onclick="ky(${pageInfo[0].registerOrderId}, ${pageInfo[0].doctorDutyId})" value="新增药品"/>&nbsp;<input type="button" value="返回" onclick="back()"/> </td></tr>
                 </tbody>
             </table>
         </div>
