@@ -4,4 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.inspur.mapper.PrescribeMapper">
 
+    <select id="getPrescribeListByCondition" resultType="com.inspur.entity.Prescribe">
+        select * from prescribe
+        <where>
+            <if test="registerOrderId != null and registerOrderId != ''">
+                and register_order_id = #{registerOrderId}
+            </if>
+        </where>
+    </select>
 </mapper>

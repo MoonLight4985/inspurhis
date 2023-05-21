@@ -1,5 +1,8 @@
 package com.inspur.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.inspur.entity.Doctor;
 import com.inspur.entity.Prescribe;
 import com.inspur.mapper.PrescribeMapper;
 import com.inspur.service.PrescribeService;
@@ -31,5 +34,13 @@ public class PrescribeServiceImpl implements PrescribeService {
         String id = new DateTime().toString("yyyyMMddHHmmss");
         prescribe.setId(id);
         return prescribeMapper.save(prescribe) > 0;
+    }
+
+    @Override
+    public PageInfo<Prescribe> getPrescribeListByCondition(Prescribe prescribe, Integer pageNum, Integer pageSize) {
+        PageHelper.startPage(pageNum, pageSize);
+        List<Prescribe> prescribeList = prescribeMapper.getPrescribeListByCondition(prescribe);
+        PageInfo<Prescribe> pageInfo = new PageInfo<>(prescribeList);
+        return pageInfo;
     }
 }

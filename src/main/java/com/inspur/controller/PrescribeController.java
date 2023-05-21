@@ -1,13 +1,11 @@
 package com.inspur.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.inspur.entity.Prescribe;
 import com.inspur.service.PrescribeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -43,4 +41,15 @@ public class PrescribeController {
         request.getSession().setAttribute("doctorAdviceId", doctorAdviceId);
         return "yzkyadd";
     }
+
+    @GetMapping("sendList")
+    public String getSendList(Prescribe prescribe,
+                              HttpServletRequest request,
+                              @RequestParam(defaultValue = "1") Integer pageNum,
+                              @RequestParam(defaultValue = "5") Integer pageSize) {
+        PageInfo<Prescribe> pageInfo = prescribeService.getPrescribeListByCondition(prescribe, pageNum, pageSize);
+        request.setAttribute("pageInfo", pageInfo);
+        return "ypfflist";
+    }
+
 }

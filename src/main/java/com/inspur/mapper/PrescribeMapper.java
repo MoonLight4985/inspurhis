@@ -18,4 +18,6 @@ public interface PrescribeMapper {
 
     @Insert("insert into prescribe (id, doctor_advice_id, register_order_id, medicine_id, number, description, status) values (#{id}, #{doctorAdviceId}, #{registerOrderId}, #{medicineId}, #{number}, #{description}, #{status})")
     int save(Prescribe prescribe);
+
+    List<Prescribe> getPrescribeListByCondition(Prescribe prescribe);
 }

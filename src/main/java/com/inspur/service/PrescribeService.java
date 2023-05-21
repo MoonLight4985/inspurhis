@@ -1,5 +1,6 @@
 package com.inspur.service;
 
+import com.github.pagehelper.PageInfo;
 import com.inspur.entity.Prescribe;
 import org.springframework.stereotype.Service;
 
@@ -11,4 +12,6 @@ public interface PrescribeService {
     boolean deleteByPrescribeId(String id);
 
     boolean save(Prescribe prescribe);
+
+    PageInfo<Prescribe> getPrescribeListByCondition(Prescribe prescribe, Integer pageNum, Integer pageSize);
 }
