@@ -35,7 +35,6 @@ public class MemberController {
                                        HttpServletRequest request,
                                        @RequestParam(defaultValue = "1") Integer pageNum,
                                        @RequestParam(defaultValue = "5") Integer pageSize) {
-        System.out.println(member);
         PageInfo<Member> pageInfo = memberService.getMemberByCondition(member, pageNum, pageSize);
         request.setAttribute("pageInfo", pageInfo);
         return "memberlist";

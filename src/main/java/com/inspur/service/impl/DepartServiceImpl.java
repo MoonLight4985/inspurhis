@@ -56,7 +56,6 @@ public class DepartServiceImpl implements DepartService {
 
     @Override
     public Depart findDepartById(String id) {
-        System.out.println(id);
         Depart depart = departMapper.findDepartById(id);
         return depart;
     }
