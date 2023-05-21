@@ -49,7 +49,7 @@ public class MemberController {
     public String findMemberById(String id, HttpServletRequest request) {
         Member member = memberService.findMemberById(id);
         request.setAttribute("member", member);
-        return "memberadd";
+        return "membermodify";
     }
 
     @GetMapping("increase")
