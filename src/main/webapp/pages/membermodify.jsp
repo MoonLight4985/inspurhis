@@ -59,6 +59,10 @@
           <th width="">电话</th>
           <th width=""><input type="text" id="tel" name="tel" value="${member.tel}"/></th>
           </thead>
+          <thead hidden>
+          <th width="">余额</th>
+          <th width=""><input type="text" id="balance" name="balance" value="${member.balance}"/></th>
+          </thead>
           </thead>
           <thead>
           <th colspan="2"><input type="submit" value="确定"/> </th>

@@ -17,8 +17,8 @@
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript">
 
-        function settle(id){
-            window.location.href="结算地址";
+        function settle(id, money){
+            window.location.href="${pageContext.request.contextPath}/member/payById?money=" + money + "&costSettleDetailId=" + id;
         }
         $(function(){
             $('tbody tr:odd').addClass("trLight");
@@ -77,7 +77,7 @@
                         <td></td>
                         <td>${settle.settleAmount}</td>
                         <td>
-                            <a onclick="settle(id)"><img src="../images/settle.jpg" width="16" height="16" title="结算"/></a>
+                            <a onclick="settle(${settle.id}, ${settle.settleAmount})"><img src="../images/settle.jpg" width="16" height="16" title="结算"/></a>
                         </td>
                     </tr>
                 </c:forEach>

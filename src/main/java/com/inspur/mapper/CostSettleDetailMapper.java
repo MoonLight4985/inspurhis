@@ -2,6 +2,8 @@ package com.inspur.mapper;
 
 import com.inspur.entity.CostSettleDetail;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -15,6 +17,9 @@ import java.util.List;
 public interface CostSettleDetailMapper{
 
     List<CostSettleDetail> findCostSettleDetailByCondition(CostSettleDetail costSettleDetail);
+
+    @Update("update cost_settle_detail set status = 1, create_time = #{nowDate} where id = #{costSettleDetailId}")
+    void finishBySettleId(@Param(value = "costSettleDetailId") String costSettleDetailId, @Param(value = "nowDate") String nowDate);
 }
 
 

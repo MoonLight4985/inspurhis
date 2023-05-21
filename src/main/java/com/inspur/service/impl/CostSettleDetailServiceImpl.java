@@ -9,6 +9,8 @@ import com.inspur.service.CostSettleDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -26,6 +28,13 @@ public class CostSettleDetailServiceImpl implements CostSettleDetailService{
         List<CostSettleDetail> costSettleDetailList = costSettleDetailMapper.findCostSettleDetailByCondition(costSettleDetail);
         PageInfo<CostSettleDetail> pageInfo = new PageInfo<>(costSettleDetailList);
         return pageInfo;
+    }
+
+    @Override
+    public void finishBySettleId(String costSettleDetailId) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String nowDate = simpleDateFormat.format(new Date());
+        costSettleDetailMapper.finishBySettleId(costSettleDetailId, nowDate);
     }
 }
 

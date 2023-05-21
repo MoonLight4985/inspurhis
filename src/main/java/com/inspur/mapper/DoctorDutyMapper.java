@@ -19,6 +19,6 @@ public interface DoctorDutyMapper {
     @Insert("insert into doctor_duty (id, doctor_id, work_time) values (#{id}, #{doctorId}, #{workTime})")
     int save(DoctorDuty doctorDuty);
 
-    @Update("update doctor_duty set doctor_id = #{doctorId}, work_time=#{workTime} where id = #{id}}")
+    @Update("update doctor_duty set doctor_id = #{doctorId}, work_time=#{workTime} where id = #{id}")
     int update(DoctorDuty doctorDuty);
 }

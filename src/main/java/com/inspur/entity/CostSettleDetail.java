@@ -34,4 +34,6 @@ public class CostSettleDetail implements Serializable {
      */
     private String createTime;
 
+    private String status;
+
 }

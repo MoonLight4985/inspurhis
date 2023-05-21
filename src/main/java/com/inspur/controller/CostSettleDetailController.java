@@ -24,6 +24,7 @@ public class CostSettleDetailController {
                                           HttpServletRequest request,
                                           @RequestParam(defaultValue = "1") Integer pageNum,
                                           @RequestParam(defaultValue = "5") Integer pageSize) {
+        costSettleDetail.setStatus("1");
         PageInfo<CostSettleDetail> pageInfo = costSettleDetailService.getCostSettleDetailByCondition(costSettleDetail, pageNum, pageSize);
         request.setAttribute("pageInfo", pageInfo);
         return "settleDlist";
@@ -37,6 +38,7 @@ public class CostSettleDetailController {
         QueryExtends queryExtends = (QueryExtends) request.getSession().getAttribute("users");
         if (queryExtends.getRole().equals("3"))
             costSettleDetail.setMemberId(queryExtends.getId());
+        costSettleDetail.setStatus("0");
         PageInfo<CostSettleDetail> pageInfo = costSettleDetailService.getCostSettleDetailByCondition(costSettleDetail, pageNum, pageSize);
         request.setAttribute("pageInfo", pageInfo);
         return "settle";

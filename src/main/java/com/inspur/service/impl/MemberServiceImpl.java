@@ -33,7 +33,6 @@ public class MemberServiceImpl implements MemberService {
         members.setId(id);
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
         members.setCreateTime(simpleDateFormat.format(new Date()));
-        System.out.println("cang2" + members);
         return membersMapper.save(members) > 0;
     }
 

@@ -2,6 +2,8 @@ package com.inspur.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.inspur.entity.Member;
+import com.inspur.entity.QueryExtends;
+import com.inspur.service.CostSettleDetailService;
 import com.inspur.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,9 @@ import javax.servlet.http.HttpServletRequest;
 public class MemberController {
     @Autowired
     private MemberService memberService;
+
+    @Autowired
+    private CostSettleDetailService costSettleDetailService;
 
     @PostMapping("save")
     public String save(Member member, HttpServletRequest request) {
@@ -66,5 +71,15 @@ public class MemberController {
         System.out.println(member);
         boolean b = memberService.saveOrUpdateMember(member);
         return "redirect:/member/list";
+    }
+
+    @GetMapping("payById")
+    public String payById(Integer money, String costSettleDetailId, HttpServletRequest request) {
+        QueryExtends queryExtends = (QueryExtends) request.getSession().getAttribute("users");
+        Member member = memberService.findMemberById(queryExtends.getId());
+        member.setBalance(member.getBalance() - money);
+        memberService.saveOrUpdateMember(member);
+        costSettleDetailService.finishBySettleId(costSettleDetailId);
+        return "redirect:/costSettleDetail/listByMemberId";
     }
 }

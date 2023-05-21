@@ -12,4 +12,6 @@ import com.inspur.entity.CostSettleDetail;
 public interface CostSettleDetailService {
 
     PageInfo<CostSettleDetail> getCostSettleDetailByCondition(CostSettleDetail costSettleDetail, Integer pageNum, Integer pageSize);
+
+    void finishBySettleId(String costSettleDetailId);
 }
