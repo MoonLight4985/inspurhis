@@ -7,7 +7,7 @@ public class Prescribe {
 
     private String id;
 
-    private String doctorDutyId;
+    private String doctorAdviceId;
 
     private String registerOrderId;
 

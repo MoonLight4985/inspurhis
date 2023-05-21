@@ -91,7 +91,7 @@
                     <li><a href="${pageContext.request.contextPath}/registerorder/list" target="right">挂号管理</a></li>
                     <li><a href="${pageContext.request.contextPath}/doctorduty/list" target="right">医生值班管理</a></li>
                     <li><a href="${pageContext.request.contextPath}/doctorAdvice/list" target="right">医生诊断管理</a></li>
-                    <li><a href="settle.html" target="right">费用结算</a></li>
+                    <li><a href="${pageContext.request.contextPath}/" target="right">费用结算</a></li>
                     <li><a href="${pageContext.request.contextPath}/payment/list" target="right">缴费明细查询</a></li>
                     <li><a href="${pageContext.request.contextPath}/costSettleDetail/list" target="right">费用结算明细查询</a></li>
                     <!--                   <li><a href="myyszblist.html" target="right">医生值班</a></li> -->
