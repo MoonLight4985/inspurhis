@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inspur.mapper.PaymentDetailMapper">
+
+    <resultMap id="BaseResultMap" type="com.inspur.entity.PaymentDetail">
+            <result property="id" column="id" jdbcType="VARCHAR"/>
+            <result property="memberId" column="member_id" jdbcType="VARCHAR"/>
+            <result property="rechargeAmount" column="recharge_amount" jdbcType="INTEGER"/>
+            <result property="balance" column="balance" jdbcType="INTEGER"/>
+            <result property="rechargeMethod" column="recharge_method" jdbcType="VARCHAR"/>
+            <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+            <result property="createTime" column="create_time" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,member_id,recharge_amount,
+        balance,recharge_method,user_id,
+        create_time
+    </sql>
+    <select id="getPaymentDetailListByCondition" resultType="com.inspur.entity.PaymentDetail">
+        select * from payment_detail
+        <where>
+            <if test="memberId!=null and memberId!=''">
+                and id= #{id}
+            </if>
+        </where>
+    </select>
+</mapper>
