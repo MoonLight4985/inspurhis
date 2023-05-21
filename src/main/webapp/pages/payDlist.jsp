@@ -71,7 +71,7 @@
                 <tr>
                     <td>${payment.id}</td>
                     <td>${payment.memberId}</td>
-                    <td>>${payment.balance}</td>
+                    <td>${payment.balance}</td>
                     <td></td>
                     <td>${payment.rechargeMethod}</td>
                     <td>${payment.userId}</td><!-- 实际存储收款人id：555555 -->

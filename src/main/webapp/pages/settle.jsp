@@ -69,36 +69,18 @@
                 <th width="10%">操作</th>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>222222</td>
-                    <td>刘二</td>
-                    <td>00001</td>
-                    <td>399</td>
-                    <td>55</td>
-                    <td>
-                        <a onclick="settle(id)"><img src="../images/settle.jpg" width="16" height="16" title="结算"/></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>222222</td>
-                    <td>刘二</td>
-                    <td>00002</td>
-                    <td>399</td>
-                    <td>55</td>
-                    <td>
-                        <a onclick="settle(id)"><img src="../images/settle.jpg" width="16" height="16" title="结算"/></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>222222</td>
-                    <td>刘二</td>
-                    <td>00003</td>
-                    <td>399</td>
-                    <td>55</td>
-                    <td>
-                        <a onclick="settle(id)"><img src="../images/settle.jpg" width="16" height="16" title="结算"/></a>
-                    </td>
-                </tr>
+                <c:forEach items="${pageInfo.list}" var="settle">
+                    <tr>
+                        <td>${settle.memberId}</td>
+                        <td>刘二</td>
+                        <td></td>
+                        <td></td>
+                        <td>${settle.settleAmount}</td>
+                        <td>
+                            <a onclick="settle(id)"><img src="../images/settle.jpg" width="16" height="16" title="结算"/></a>
+                        </td>
+                    </tr>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
@@ -107,25 +89,40 @@
         <div id='project_pagination' class="pagination pagination-centered">
             <div class="pagination">
                 <ul>
-                    <li class="disabled"><a href="#">«</a></li>
-                    <li class="active"><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">»</a></li>
+                    <li class="disabled"><a
+                            href="${pageContext.request.contextPath}/costSettleDetail/listByMemberId?pageNum=${pageInfo.isFirstPage?1:pageInfo.prePage}&pageSize=${pageInfo.pageSize}&memberId=${costSettleDetail.memberId}">«</a>
+                    </li>
+                    <c:forEach items="${pageInfo.navigatepageNums}" var="nav">
+                        <li class="${pageInfo.pageNum==nav?'active':''}"><a
+                                href="${pageContext.request.contextPath}/costSettleDetail/listByMemberId?pageNum=${nav}&pageSize=${pageInfo.pageSize}&memberId=${costSettleDetail.memberId}">${nav}</a>
+                        </li>
+                    </c:forEach>
+
+
+                    <li>
+                        <a href="${pageContext.request.contextPath}/costSettleDetail/listByMemberId?pageNum=${pageInfo.isLastPage?pageInfo.pages:pageInfo.nextPage}&pageSize=${pageInfo.pageSize}&memberId=${costSettleDetail.memberId}">»</a>
+                    </li>
                 </ul>
                 <ul>
-                    <li><span>(1-10/38)</span></li>
-                    <li><span>显示条数&nbsp;:&nbsp;</span></li>
+                    <li><span>(${pageInfo.startRow}-${pageInfo.endRow}/${pageInfo.total})</span></li>
+                    <li><span>显示条数&nbsp;:${pageInfo.size}</span></li>
                 </ul>
                 <ul>
-                    <li class="active"><a href="#">10</a></li>
-                    <li class=""><a href="#">30</a></li>
-                    <li class=""><a href="#">50</a></li>
+                    <li class="${pageInfo.pageSize==5?'active':''}"><a
+                            href="${pageContext.request.contextPath}/costSettleDetail/listByMemberId?pageSize=5&memberId=${costSettleDetail.memberId}">5</a>
+                    </li>
+                    <li class="${pageInfo.pageSize==10 ?'active':''}"><a
+                            href="${pageContext.request.contextPath}/costSettleDetail/listByMemberId?pageSize=10&memberId=${costSettleDetail.memberId}">10</a>
+                    </li>
+                    <li class="${pageInfo.pageSize==15 ?'active':''}"><a
+                            href="${pageContext.request.contextPath}/costSettleDetail/listByMemberId?pageSize=15&memberId=${costSettleDetail.memberId}">15</a>
+                    </li>
+                    <li class="${pageInfo.pageSize==20 ?'active':''}"><a
+                            href="${pageContext.request.contextPath}/costSettleDetail/listByMemberId?pageSize=20&memberId=${costSettleDetail.memberId}">20</a>
+                    </li>
                 </ul>
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>

@@ -19,9 +19,9 @@
         function deletes(id, orderid){
             window.location.href="${pageContext.request.contextPath}/prescribe/deleteByPrescribeId?id=" + id + "&registerOrderId=" + orderid;
         }
-        function ky(orderid, dutyId){
+        function ky(orderid, doctorAdviceId){
 <%--// 	var yzid = '<%=yzid%>';--%>
-            window.location.href="${pageContext.request.contextPath}/prescribe/toAdd?registerOrderId=" + orderid + "&doctorAdviceId=" + dutyId;
+            window.location.href="${pageContext.request.contextPath}/prescribe/toAdd?registerOrderId=" + orderid + "&doctorAdviceId=" + doctorAdviceId;
         }
         $(function(){
             $('tbody tr:odd').addClass("trLight");

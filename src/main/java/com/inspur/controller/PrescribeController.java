@@ -38,9 +38,9 @@ public class PrescribeController {
     }
 
     @GetMapping("toAdd")
-    public String toAdd(String registerOrderId, String doctorDutyId, HttpServletRequest request) {
+    public String toAdd(String registerOrderId, String doctorAdviceId, HttpServletRequest request) {
         request.getSession().setAttribute("registerOrderId", registerOrderId);
-        request.getSession().setAttribute("doctorDutyId", doctorDutyId);
+        request.getSession().setAttribute("doctorAdviceId", doctorAdviceId);
         return "yzkyadd";
     }
 }
