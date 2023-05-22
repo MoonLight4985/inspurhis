@@ -41,6 +41,11 @@ public class CostSettleDetailServiceImpl implements CostSettleDetailService{
     public void addCostSettleDetail(CostSettleDetail costSettleDetail) {
         costSettleDetailMapper.save(costSettleDetail);
     }
+
+    @Override
+    public CostSettleDetail getCostSettleById(String costSettleDetailId) {
+        return costSettleDetailMapper.getCostSettleById(costSettleDetailId);
+    }
 }
 
 

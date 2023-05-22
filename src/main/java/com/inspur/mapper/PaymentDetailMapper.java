@@ -1,6 +1,7 @@
 package com.inspur.mapper;
 
 import com.inspur.entity.PaymentDetail;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -15,6 +16,9 @@ import java.util.List;
 public interface PaymentDetailMapper {
 
     List<PaymentDetail> getPaymentDetailListByCondition(PaymentDetail paymentDetail);
+
+    @Insert("insert into payment_detail set id = #{id}, member_id = #{memberId}, recharge_amount = #{rechargeAmount}, balance = #{balance}, recharge_method = #{rechargeMethod}, user_id = #{userId}, create_time = #{createTime}")
+    void save(PaymentDetail paymentDetail);
 }
 
 

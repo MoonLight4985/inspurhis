@@ -16,4 +16,6 @@ public interface CostSettleDetailService {
     void finishBySettleId(String costSettleDetailId);
 
     void addCostSettleDetail(CostSettleDetail costSettleDetail);
+
+    CostSettleDetail getCostSettleById(String costSettleDetailId);
 }

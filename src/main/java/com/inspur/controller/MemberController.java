@@ -1,10 +1,13 @@
 package com.inspur.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.inspur.entity.CostSettleDetail;
 import com.inspur.entity.Member;
+import com.inspur.entity.PaymentDetail;
 import com.inspur.entity.QueryExtends;
 import com.inspur.service.CostSettleDetailService;
 import com.inspur.service.MemberService;
+import com.inspur.service.PaymentDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/member")
@@ -22,6 +27,9 @@ public class MemberController {
 
     @Autowired
     private CostSettleDetailService costSettleDetailService;
+
+    @Autowired
+    private PaymentDetailService paymentDetailService;
 
     @PostMapping("save")
     public String save(Member member, HttpServletRequest request) {
@@ -78,8 +86,22 @@ public class MemberController {
         QueryExtends queryExtends = (QueryExtends) request.getSession().getAttribute("users");
         Member member = memberService.findMemberById(queryExtends.getId());
         member.setBalance(member.getBalance() - money);
-        memberService.saveOrUpdateMember(member);
+        memberService.saveOrUpdateMember(member);//扣钱
         costSettleDetailService.finishBySettleId(costSettleDetailId);
+        PaymentDetail paymentDetail = new PaymentDetail();
+        paymentDetail.setMemberId(member.getId());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+        SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
+        paymentDetail.setId(simpleDateFormat.format(new Date()));
+        paymentDetail.setRechargeAmount(money);
+        paymentDetail.setBalance(member.getBalance() - money);
+        paymentDetail.setCreateTime(simpleDateFormat2.format(new Date()));
+        paymentDetail.setRechargeMethod("微信支付");
+
+        CostSettleDetail costSettleDetail = costSettleDetailService.getCostSettleById(costSettleDetailId);
+        paymentDetail.setUserId(costSettleDetail.getUserId());
+//        System.out.println("看过来 " + queryExtends.getId());
+        paymentDetailService.save(paymentDetail);
         return "redirect:/costSettleDetail/listByMemberId";
     }
 }

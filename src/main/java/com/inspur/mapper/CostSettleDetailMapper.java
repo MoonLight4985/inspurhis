@@ -1,10 +1,7 @@
 package com.inspur.mapper;
 
 import com.inspur.entity.CostSettleDetail;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -24,6 +21,9 @@ public interface CostSettleDetailMapper{
 
     @Insert("insert into cost_settle_detail (id, member_id, settle_amount, user_id, create_time, status) values (#{id}, #{memberId}, #{settleAmount}, #{userId}, #{createTime}, #{status})")
     void save(CostSettleDetail costSettleDetail);
+
+    @Select("select * from cost_settle_detail where id = #{costSettleDetailId}")
+    CostSettleDetail getCostSettleById(String costSettleDetailId);
 }
 
 

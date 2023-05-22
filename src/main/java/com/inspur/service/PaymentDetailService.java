@@ -14,4 +14,6 @@ import java.util.List;
 public interface PaymentDetailService {
 
     PageInfo<PaymentDetail> getPaymentDetailListByCondition(PaymentDetail paymentDetail, Integer pageNum, Integer pageSize);
+
+    void save(PaymentDetail paymentDetail);
 }

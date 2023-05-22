@@ -41,7 +41,7 @@
 
 <body>
 <div id="contentWrap">
-    <form action="${pageContext.request.contextPath}/payment/list" method="post">
+    <form action="${pageContext.request.contextPath}/payment/list" method="get">
         <div id="widget table-widget">
             <div class="pageTitle">缴费明细查询</div>
             <div class="querybody">

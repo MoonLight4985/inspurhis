@@ -84,7 +84,7 @@
 
             <li class="subMenuTitle">菜单</li>
             <%--患者看到的页面--%>
-            <c:if test="${sessionScope.users.role==2}">
+            <c:if test="${sessionScope.users.role==3}">
                 <ul>
                     <li><a href="${pageContext.request.contextPath}/pages/yyghadd.jsp" target="right">预约挂号</a></li>
                     <li><a href="${pageContext.request.contextPath}/registerorder/list" target="right">挂号管理</a></li>
@@ -121,8 +121,8 @@
                     <li><a href="${pageContext.request.contextPath}/registerorder/list" target="right">挂号管理</a></li>
                     <li><a href="${pageContext.request.contextPath}/doctorduty/list" target="right">医生值班管理</a></li>
                     <li><a href="${pageContext.request.contextPath}/doctorAdvice/list" target="right">医生诊断管理</a></li>
-                    <li><a href="${pageContext.request.contextPath}/costSettleDetail/listByMemberId"
-                           target="right">费用结算</a></li>
+<%--                    <li><a href="${pageContext.request.contextPath}/costSettleDetail/listByMemberId"--%>
+<%--                           target="right">费用结算</a></li>--%>
                     <li><a href="${pageContext.request.contextPath}/payment/list" target="right">缴费明细查询</a></li>
                     <li><a href="${pageContext.request.contextPath}/costSettleDetail/list" target="right">费用结算明细查询</a>
                     </li>

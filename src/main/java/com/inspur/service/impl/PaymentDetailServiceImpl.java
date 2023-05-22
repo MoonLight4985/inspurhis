@@ -28,6 +28,11 @@ public class PaymentDetailServiceImpl implements PaymentDetailService{
         return pageInfo;
 
     }
+
+    @Override
+    public void save(PaymentDetail paymentDetail) {
+        paymentDetailMapper.save(paymentDetail);
+    }
 }
 
 
