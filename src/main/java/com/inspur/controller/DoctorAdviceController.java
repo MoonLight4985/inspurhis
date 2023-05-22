@@ -2,7 +2,9 @@ package com.inspur.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.inspur.entity.DoctorAdvice;
+import com.inspur.entity.Member;
 import com.inspur.service.DoctorAdviceService;
+import com.inspur.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,12 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @RequestMapping("doctorAdvice")
 public class DoctorAdviceController {
     @Autowired
     private DoctorAdviceService doctorAdviceService;
+
+    @Autowired
+    private MemberService memberService;
 
     @PostMapping("save")
     public String save(DoctorAdvice doctorAdvice, HttpServletRequest request) {
@@ -51,4 +57,10 @@ public class DoctorAdviceController {
         return "yzadd";
     }
 
+    @GetMapping("toAddDoctorAdvice")
+    public String toAddDoctorAdvice(HttpServletRequest request) {
+        List<Member> allMember = memberService.getAllMember();
+        request.setAttribute("memberList", allMember);
+        return "yzadd";
+    }
 }

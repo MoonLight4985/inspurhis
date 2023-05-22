@@ -49,6 +49,11 @@ public class MedicineServiceImpl implements MedicineService {
         return medicine;
     }
 
+    @Override
+    public List<Medicine> getAllMedicine() {
+        return medicineMapper.findMedicineByCondition(new Medicine());
+    }
+
     boolean save(Medicine medicine) {
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
         medicine.setIntroduceDate(simpleDateFormat.format(new Date()));

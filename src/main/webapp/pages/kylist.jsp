@@ -10,29 +10,31 @@
 
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>无标题文档</title>
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript">
 
-        function deletes(id, orderid){
-            window.location.href="${pageContext.request.contextPath}/prescribe/deleteByPrescribeId?id=" + id + "&registerOrderId=" + orderid;
+        function deletes(id, orderid) {
+            window.location.href = "${pageContext.request.contextPath}/prescribe/deleteByPrescribeId?id=" + id + "&registerOrderId=" + orderid;
         }
-        function ky(orderid, doctorAdviceId){
-<%--// 	var yzid = '<%=yzid%>';--%>
-            window.location.href="${pageContext.request.contextPath}/prescribe/toAdd?registerOrderId=" + orderid + "&doctorAdviceId=" + doctorAdviceId;
+
+        function ky(orderid, doctorAdviceId) {
+            <%--// 	var yzid = '<%=yzid%>';--%>
+            window.location.href = "${pageContext.request.contextPath}/prescribe/toAdd?registerOrderId=" + orderid + "&doctorAdviceId=" + doctorAdviceId;
         }
-        $(function(){
+
+        $(function () {
             $('tbody tr:odd').addClass("trLight");
 
-            $(".select-all").click(function(){
-                if($(this).attr("checked")){
-                    $(".checkBox input[type=checkbox]").each(function(){
+            $(".select-all").click(function () {
+                if ($(this).attr("checked")) {
+                    $(".checkBox input[type=checkbox]").each(function () {
                         $(this).attr("checked", true);
                     });
-                }else{
-                    $(".checkBox input[type=checkbox]").each(function(){
+                } else {
+                    $(".checkBox input[type=checkbox]").each(function () {
                         $(this).attr("checked", false);
                     });
                 }
@@ -40,14 +42,14 @@
         });
     </script>
     <script type="text/javascript">
-        function back(){
-            window.location.href="${pageContext.request.contextPath}/doctorAdvice/list";
+        function back() {
+            window.location.href = "${pageContext.request.contextPath}/doctorAdvice/list";
         }
 
     </script>
     <style type="text/css">
         body {
-            background:#FFF
+            background: #FFF
         }
     </style>
 </head>
@@ -71,13 +73,22 @@
                     <tr>
                         <td>${ky.registerOrderId}</td>
                         <td>${ky.medicineId}</td>
-                        <td></td>
+                        <td>
+                            <c:forEach items="${medicineList}" var="medicine">
+                                <c:if test="${medicine.id == ky.medicineId}">${medicine.name}</c:if>
+                            </c:forEach>
+                        </td>
                         <td>${ky.number}</td>
                         <td>${ky.description}</td>
-                        <td><a onclick="deletes(${ky.id}, ${ky.registerOrderId})"><img src="../images/icon/del.png" width="16" height="16" /></a></td>
+                        <td><a onclick="deletes(${ky.id}, ${ky.registerOrderId})"><img src="../images/icon/del.png"
+                                                                                       width="16" height="16"/></a></td>
                     </tr>
                 </c:forEach>
-                <tr><td colspan="6"><input type="button" onclick="ky(${pageInfo[0].registerOrderId}, ${pageInfo[0].doctorAdviceId})" value="新增药品"/>&nbsp;<input type="button" value="返回" onclick="back()"/> </td></tr>
+                <tr>
+                    <td colspan="6"><input type="button"
+                                           onclick="ky(${pageInfo[0].registerOrderId}, ${pageInfo[0].doctorAdviceId})"
+                                           value="新增药品"/>&nbsp;<input type="button" value="返回" onclick="back()"/></td>
+                </tr>
                 </tbody>
             </table>
         </div>

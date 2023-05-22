@@ -6,24 +6,25 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>无标题文档</title>
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript">
-        $(function(){
+        $(function () {
             $('tbody tr:odd').addClass("trLight");
 
-            $(".select-all").click(function(){
-                if($(this).attr("checked")){
-                    $(".checkBox input[type=checkbox]").each(function(){
+            $(".select-all").click(function () {
+                if ($(this).attr("checked")) {
+                    $(".checkBox input[type=checkbox]").each(function () {
                         $(this).attr("checked", true);
                     });
-                }else{
-                    $(".checkBox input[type=checkbox]").each(function(){
+                } else {
+                    $(".checkBox input[type=checkbox]").each(function () {
                         $(this).attr("checked", false);
                     });
                 }
@@ -32,7 +33,7 @@
     </script>
     <style type="text/css">
         body {
-            background:#FFF
+            background: #FFF
         }
     </style>
 </head>
@@ -48,27 +49,32 @@
                 <table>
                     <tr hidden>
                         <td width="10%" align="right">registerOrderId</td>
-                        <td width="50%"><input type="text" id="registerOrderId" name="registerOrderId" value="${registerOrderId}"/></td>
+                        <td width="50%"><input type="text" id="registerOrderId" name="registerOrderId"
+                                               value="${registerOrderId}"/></td>
                         <td width="10%" align="right">doctorAdviceId</td>
-                        <td width="50%"><input type="text" id="doctorAdviceId" name="doctorAdviceId" value="${doctorAdviceId}"/></td>
+                        <td width="50%"><input type="text" id="doctorAdviceId" name="doctorAdviceId"
+                                               value="${doctorAdviceId}"/></td>
                     </tr>
                     <tr>
                         <td width="20%" align="right">药品</td>
-                        <td width="20%" ><select id="medicineId" name="medicineId">
-                            <option value="123456">皮炎平</option>
-                            <option value="123456">皮炎平</option>
-                            <option value="123456">皮炎平</option>
-                        </select></td>
+                        <td width="20%">
+                            <select id="medicineId" name="medicineId">
+                                <option value="0">-请选择-</option>
+                                <c:forEach items="${medicineList}" var="medicine">
+                                    <option value="${medicine.id}">${medicine.name}</option>
+                                </c:forEach>
+                            </select>
+                        </td>
                         <td width="10%" align="right">数量</td>
-                        <td width="50%"><input type="text" id="number" name="number" /></td>
+                        <td width="50%"><input type="text" id="number" name="number"/></td>
                     </tr>
                     <tr>
                         <td width="20%" align="right">描述</td>
-                        <td width="80%" colspan="3"><textarea rows="5"  id="description"
+                        <td width="80%" colspan="3"><textarea rows="5" id="description"
                                                               name="description" style="width:99%"></textarea></td>
                     </tr>
                     <tr>
-                        <td colspan="4" align="center"><input type="submit" value="确定" /></td>
+                        <td colspan="4" align="center"><input type="submit" value="确定"/></td>
                     </tr>
                 </table>
             </div>

@@ -69,7 +69,7 @@
     <!--表格控件 -->
 
     <div class="pageColumn">
-        <div class="pageButton"><a href="${pageContext.request.contextPath}/pages/yzadd.jsp"><img src="../images/t01.png" title="新增"/></a><span>医生诊断结果列表</span>
+        <div class="pageButton"><a href="${pageContext.request.contextPath}/doctorduty/toAddDoctorDuty"><img src="../images/t01.png" title="新增"/></a><span>医生诊断结果列表</span>
         </div>
         <table>
             <thead>

@@ -49,9 +49,10 @@
                     <tr>
                         <td width="20%" align="right">会员</td>
                         <td width="20%"><select id="memberId" name="memberId" >
-                            <option value="222222">liuer</option>
-                            <option value="222222">liuer</option>
-                            <option value="222222">liuer</option>
+                            <option value="0">-请选择-</option>
+                            <c:forEach items="${memberList}" var="member">
+                                <option value="${member.id}">${member.name}</option>
+                            </c:forEach>
                         </select>
                         </td>
                         <td width="10%" align="right">挂号号</td>
