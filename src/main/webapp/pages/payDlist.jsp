@@ -69,12 +69,20 @@
             <tbody>
             <c:forEach items="${pageInfo.list}" var="payment">
                 <tr>
-                    <td>${payment.id}</td>
                     <td>${payment.memberId}</td>
+                    <td>
+                        <c:forEach items="${memberList}" var="member">
+                            <c:if test="${payment.memberId == member.id}">${member.name}</c:if>
+                        </c:forEach>
+                    </td>
+                    <td>${payment.rechargeAmount}</td>
                     <td>${payment.balance}</td>
-                    <td></td>
                     <td>${payment.rechargeMethod}</td>
-                    <td>${payment.userId}</td><!-- 实际存储收款人id：555555 -->
+                    <td>
+                        <c:forEach items="${userList}" var="user">
+                            <c:if test="${payment.userId == user.id}">${user.username}</c:if>
+                        </c:forEach>
+                    </td><!-- 实际存储收款人id：555555 -->
                     <td>${payment.createTime}</td>
                 </tr>
             </c:forEach>

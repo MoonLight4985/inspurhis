@@ -94,7 +94,7 @@ public class MemberController {
         SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy-MM-dd");
         paymentDetail.setId(simpleDateFormat.format(new Date()));
         paymentDetail.setRechargeAmount(money);
-        paymentDetail.setBalance(member.getBalance() - money);
+        paymentDetail.setBalance(member.getBalance());
         paymentDetail.setCreateTime(simpleDateFormat2.format(new Date()));
         paymentDetail.setRechargeMethod("微信支付");
 

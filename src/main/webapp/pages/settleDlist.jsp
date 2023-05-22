@@ -76,10 +76,18 @@
             <c:forEach items="${pageInfo.list}" var="costSettleDetail">
                 <tr>
                     <td>${costSettleDetail.id}</td>
-                    <td>${costSettleDetail.memberId}</td>
-                    <td>00001</td>
+                    <td>${costSettleDetail.memberId}
+                        <c:forEach items="${memberList}" var="member">
+                            <c:if test="${member.id == costSettleDetail.memberId}">${member.name}</c:if>
+                        </c:forEach>
+                    </td>
+                    <td>---</td>
                     <td>${costSettleDetail.settleAmount}</td>
-                    <td>${costSettleDetail.userId}</td><!-- 数据库结构应存储id值 -->
+                    <td>${costSettleDetail.userId}
+                        <c:forEach items="${userList}" var="user">
+                            <c:if test="${user.id == costSettleDetail.userId}">${user.realname}</c:if>
+                        </c:forEach>
+                    </td><!-- 数据库结构应存储id值 -->
                     <td>${costSettleDetail.createTime}</td>
                 </tr>
             </c:forEach>
