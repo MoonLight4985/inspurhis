@@ -51,10 +51,14 @@
             <div class="pageTitle">挂号管理</div>
             <div class="querybody">
                 <ul class="seachform">
-                    <li><label>挂号号</label><input name="id" value="${registerOrder.id}" type="text" class="scinput"/></li>
-                    <li><label>会员ID</label><input name="memberId" value="${registerOrder.memberId}" type="text" class="scinput"/></li>
-                    <li><label>科室</label><input name="departId" value="${registerOrder.departId}" type="text" class="scinput"/></li>
-                    <li><label>挂号时间</label><input name="roTime" value="${registerOrder.roTime}" type="text" class="scinput"/></li>
+                    <li><label>挂号号</label><input name="id" value="${registerOrder.id}" type="text" class="scinput"/>
+                    </li>
+                    <li><label>会员ID</label><input name="memberId" value="${registerOrder.memberId}" type="text"
+                                                  class="scinput"/></li>
+                    <li><label>科室</label><input name="departId" value="${registerOrder.departId}" type="text"
+                                                class="scinput"/></li>
+                    <li><label>挂号时间</label><input name="roTime" value="${registerOrder.roTime}" type="text"
+                                                  class="scinput"/></li>
                     <li><label>&nbsp;</label><input type="submit" class="scbtn" value="查询"/></li>
                 </ul>
             </div>
@@ -62,12 +66,13 @@
     </form>
     <!--表格控件 -->
     <div class="pageColumn">
-        <div class="pageButton"><a href="${pageContext.request.contextPath}/pages/ghadd.jsp"><img src="../images/t01.png" title="新增"/></a><span>挂号列表</span>
+        <div class="pageButton"><a href="${pageContext.request.contextPath}/registerorder/toAddOrder"><img
+                src="../images/t01.png" title="新增"/></a><span>挂号列表</span>
         </div>
         <table>
             <thead>
             <th width="">挂号号</th>
-            <th width="">会员ID</th>
+            <th width="">会员</th>
             <th width="">科室</th>
             <th width="">医生</th>
             <th width="">挂号费用</th>
@@ -79,13 +84,26 @@
             <c:forEach items="${pageInfo.list}" var="registerOrder">
                 <tr>
                     <td>${registerOrder.id}</td>
-                    <td>${registerOrder.memberId}</td>
-                    <td>${registerOrder.departId}</td>
-                    <td>${registerOrder.doctorId}</td>
+                    <td>
+                        <c:forEach items="${memberList}" var="member">
+                            <c:if test="${member.id == registerOrder.memberId}">${member.name}</c:if>
+                        </c:forEach>
+                    </td>
+                    <td>
+                        <c:forEach items="${departList}" var="depart">
+                            <c:if test="${depart.id == registerOrder.departId}">${depart.name}</c:if>
+                        </c:forEach>
+                    </td>
+                    <td>
+                        <c:forEach items="${doctorList}" var="doctor">
+                            <c:if test="${doctor.id == registerOrder.doctorId}">${doctor.name}</c:if>
+                        </c:forEach>
+                    </td>
                     <td>${registerOrder.price}</td>
                     <td>${registerOrder.roTime}</td>
                     <td>${registerOrder.optionTime}</td>
-                    <td><a onclick="deletes(${registerOrder.id})"><img src="../images/icon/del.png" width="16" height="16"/></a></td>
+                    <td><a onclick="deletes(${registerOrder.id})"><img src="../images/icon/del.png" width="16"
+                                                                       height="16"/></a></td>
                 </tr>
             </c:forEach>
 

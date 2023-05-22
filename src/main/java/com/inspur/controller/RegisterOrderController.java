@@ -1,7 +1,13 @@
 package com.inspur.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.inspur.entity.Depart;
+import com.inspur.entity.Doctor;
+import com.inspur.entity.Member;
 import com.inspur.entity.RegisterOrder;
+import com.inspur.service.DepartService;
+import com.inspur.service.DoctorService;
+import com.inspur.service.MemberService;
 import com.inspur.service.RegisterOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,12 +17,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @RequestMapping("registerorder")
 public class RegisterOrderController {
     @Autowired
     private RegisterOrderService registerOrderService;
+
+    @Autowired
+    private DoctorService doctorService;
+
+    @Autowired
+    private DepartService departService;
+
+    @Autowired
+    private MemberService memberService;
 
     @PostMapping("save")
     public String save(RegisterOrder registerOrder, HttpServletRequest request) {
@@ -36,7 +52,12 @@ public class RegisterOrderController {
                                       @RequestParam(defaultValue = "5") Integer pageSize) {
         System.out.println(registerOrder);
         PageInfo<RegisterOrder> pageInfo = registerOrderService.getOrderByCondition(registerOrder, pageNum, pageSize);
-        System.out.println(pageInfo);
+        List<Member> allMember = memberService.getAllMember();
+        List<Depart> allDepart = departService.getAllDepart();
+        List<Doctor> allDoctor = doctorService.getAllDoctor();
+        request.setAttribute("memberList", allMember);
+        request.setAttribute("departList", allDepart);
+        request.setAttribute("doctorList", allDoctor);
         request.setAttribute("pageInfo", pageInfo);
         return "ghlist";
     }
@@ -51,6 +72,17 @@ public class RegisterOrderController {
         RegisterOrder registerOrder = registerOrderService.findOrderById(id);
         request.setAttribute("order", registerOrder);
         System.out.println("save" + registerOrder);
+        return "ghadd";
+    }
+
+    @GetMapping("toAddOrder")
+    public String toAddOrder(HttpServletRequest request) {
+        List<Member> allMember = memberService.getAllMember();
+        List<Depart> allDepart = departService.getAllDepart();
+        List<Doctor> allDoctor = doctorService.getAllDoctor();
+        request.setAttribute("memberList", allMember);
+        request.setAttribute("departList", allDepart);
+        request.setAttribute("doctorList", allDoctor);
         return "ghadd";
     }
 }

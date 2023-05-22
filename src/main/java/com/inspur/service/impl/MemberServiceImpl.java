@@ -58,4 +58,9 @@ public class MemberServiceImpl implements MemberService {
         Member members = membersMapper.findMemberById(id);
         return members;
     }
+
+    @Override
+    public List<Member> getAllMember() {
+        return membersMapper.findMemberByCondition(new Member());
+    }
 }

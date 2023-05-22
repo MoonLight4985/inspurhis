@@ -117,7 +117,7 @@
                     <li><a href="${pageContext.request.contextPath}/depart/list" target="right">科室管理</a></li>
                     <li><a href="${pageContext.request.contextPath}/member/list" target="right">会员管理</a></li>
                     <!-- 挂号人员独有 -->
-                    <li><a href="${pageContext.request.contextPath}/pages/yyghadd.jsp" target="right">预约挂号</a></li>
+                    <li><a href="${pageContext.request.contextPath}/registerorder/toAddOrder" target="right">预约挂号</a></li>
                     <li><a href="${pageContext.request.contextPath}/registerorder/list" target="right">挂号管理</a></li>
                     <li><a href="${pageContext.request.contextPath}/doctorduty/list" target="right">医生值班管理</a></li>
                     <li><a href="${pageContext.request.contextPath}/doctorAdvice/list" target="right">医生诊断管理</a></li>
