@@ -56,4 +56,9 @@ public class DoctorServiceImpl implements DoctorService {
         Doctor doctors = doctorsMapper.findDoctorById(id);
         return doctors;
     }
+
+    @Override
+    public List<Doctor> getAllDoctor() {
+        return doctorsMapper.findDoctorByCondition(new Doctor());
+    }
 }

@@ -33,9 +33,9 @@
                     <tr>
                         <td width="20%" align="right">医生</td>
                         <td width="20%"><select id="docid" name="doctorId">
-                            <option value="333333">zhangsan</option>
-                            <option value="333333">zhangsan</option>
-                            <option value="333333">zhangsan</option>
+                            <c:forEach items="${doctorList}" var="doctor">
+                                <option value="${doctor.id}">${doctor.name}</option>
+                            </c:forEach>
                         </select></td>
                         <td width="10%" align="right">日期</td>
                         <td width="50%"><input type="text" id="workTime" name="workTime" onClick="SelectDate(this.name)" /> </td>

@@ -3,6 +3,8 @@ package com.inspur.service;
 import com.github.pagehelper.PageInfo;
 import com.inspur.entity.Doctor;
 
+import java.util.List;
+
 public interface DoctorService {
     boolean saveOrUpdateDoctor(Doctor doctor);
 
@@ -11,4 +13,6 @@ public interface DoctorService {
     boolean deleteByDoctorId(String id);
 
     Doctor findDoctorById(String id);
+
+    List<Doctor> getAllDoctor();
 }
