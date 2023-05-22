@@ -30,6 +30,8 @@ public class DoctorDutyController {
                                          @RequestParam(defaultValue = "1") Integer pageNum,
                                          @RequestParam(defaultValue = "5") Integer pageSize) {
         PageInfo<DoctorDuty> pageInfo = doctorDutyService.getDoctorDutyByCondition(doctorDuty, pageNum, pageSize);
+        List<Doctor> allDoctor = doctorService.getAllDoctor();
+        request.setAttribute("doctorList", allDoctor);
         request.setAttribute("pageInfo", pageInfo);
         return "yszblist";
     }
@@ -60,4 +62,10 @@ public class DoctorDutyController {
         return "yszbadd";
     }
 
+    @GetMapping("toAddDoctorDuty")
+    public String toAddDoctorDuty(HttpServletRequest request) {
+        List<Doctor> allDoctor = doctorService.getAllDoctor();
+        request.setAttribute("doctorList", allDoctor);
+        return "yszbadd";
+    }
 }

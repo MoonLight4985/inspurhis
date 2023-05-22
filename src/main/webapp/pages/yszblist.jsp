@@ -62,7 +62,7 @@
     </form>
 
     <div class="pageColumn">
-        <div class="pageButton"><a href="${pageContext.request.contextPath}/pages/yszbadd.jsp"><img
+        <div class="pageButton"><a href="${pageContext.request.contextPath}/doctorduty/toAddDoctorDuty"><img
                 src="../images/t01.png" title="新增"/></a><span>医生值班列表</span></div>
         <table>
             <thead>
@@ -75,7 +75,11 @@
             <c:forEach items="${pageInfo.list}" var="doctorDuty">
                 <tr>
                     <td>${doctorDuty.id}</td>
-                    <td>${doctorDuty.doctorId}</td>
+                    <td>
+                        <c:forEach items="${doctorList}" var="doctor">
+                            <c:if test="${doctor.id == doctorDuty.doctorId}">${doctor.realname}</c:if>
+                        </c:forEach>
+                    </td>
                     <td>${doctorDuty.workTime}</td>
                     <td>
                         <a onclick="deletes(${doctorDuty.id})"><img src="../images/icon/del.png" width="16"

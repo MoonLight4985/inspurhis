@@ -96,7 +96,7 @@
                     </td>
                     <td>
                         <c:forEach items="${doctorList}" var="doctor">
-                            <c:if test="${doctor.id == registerOrder.doctorId}">${doctor.name}</c:if>
+                            <c:if test="${doctor.id == registerOrder.doctorId}">${doctor.realname}</c:if>
                         </c:forEach>
                     </td>
                     <td>${registerOrder.price}</td>
