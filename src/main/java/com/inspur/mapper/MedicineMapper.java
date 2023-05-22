@@ -20,4 +20,7 @@ public interface MedicineMapper {
 
     @Select("select * from medicine where id = #{id}")
     Medicine findUsersById(String id);
+
+    @Update("update medicine set number = number - #{num} where id = #{medicineId}")
+    void sendMedicine(@Param(value = "medicineId") String medicineId, @Param(value = "num") int num);
 }

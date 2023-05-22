@@ -65,4 +65,5 @@ public class PrescribeController {
         prescribeService.sendMedicineById(id);
         return "redirect:/prescribe/sendList";
     }
+
 }

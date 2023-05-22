@@ -16,4 +16,6 @@ public interface MedicineService {
     Medicine findMedicineById(String id);
 
     List<Medicine> getAllMedicine();
+
+    void sendMedicine(String medicineId, int num);
 }

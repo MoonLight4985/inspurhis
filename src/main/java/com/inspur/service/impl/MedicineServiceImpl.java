@@ -54,6 +54,11 @@ public class MedicineServiceImpl implements MedicineService {
         return medicineMapper.findMedicineByCondition(new Medicine());
     }
 
+    @Override
+    public void sendMedicine(String medicineId, int num) {
+        medicineMapper.sendMedicine(medicineId, num);
+    }
+
     boolean save(Medicine medicine) {
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
         medicine.setIntroduceDate(simpleDateFormat.format(new Date()));

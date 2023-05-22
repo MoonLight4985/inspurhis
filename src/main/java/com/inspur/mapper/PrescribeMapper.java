@@ -2,6 +2,7 @@ package com.inspur.mapper;
 
 import com.inspur.entity.Prescribe;
 import org.apache.ibatis.annotations.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -20,4 +21,7 @@ public interface PrescribeMapper {
 
     @Update("update prescribe set status=1 where id = #{id}")
     void sendMedicineById(String id);
+
+    @Select("select * from prescribe where id = #{id}")
+    Prescribe getPrescribeById(String id);
 }
