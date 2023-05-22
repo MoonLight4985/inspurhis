@@ -61,8 +61,8 @@ public class PrescribeController {
     }
 
     @GetMapping("sendMedicineById")
-    public String sendMedicineById(String id) {
-        prescribeService.sendMedicineById(id);
+    public String sendMedicineById(String id, HttpServletRequest request) {
+        prescribeService.sendMedicineById(id, request);
         return "redirect:/prescribe/sendList";
     }
 

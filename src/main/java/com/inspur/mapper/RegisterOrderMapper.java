@@ -8,6 +8,7 @@ import java.util.List;
 @Mapper
 public interface RegisterOrderMapper {
 
+
     List<RegisterOrder> findOrderByCondition(RegisterOrder registerOrder);
 
     @Delete("delete from register_order where id = #{id}")
@@ -20,4 +21,5 @@ public interface RegisterOrderMapper {
     int save(RegisterOrder orders);
 
     int update(RegisterOrder orders);
+
 }

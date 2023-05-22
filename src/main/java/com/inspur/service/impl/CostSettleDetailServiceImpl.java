@@ -36,6 +36,11 @@ public class CostSettleDetailServiceImpl implements CostSettleDetailService{
         String nowDate = simpleDateFormat.format(new Date());
         costSettleDetailMapper.finishBySettleId(costSettleDetailId, nowDate);
     }
+
+    @Override
+    public void addCostSettleDetail(CostSettleDetail costSettleDetail) {
+        costSettleDetailMapper.save(costSettleDetail);
+    }
 }
 
 

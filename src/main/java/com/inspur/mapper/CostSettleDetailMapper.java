@@ -1,6 +1,7 @@
 package com.inspur.mapper;
 
 import com.inspur.entity.CostSettleDetail;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Update;
@@ -20,6 +21,9 @@ public interface CostSettleDetailMapper{
 
     @Update("update cost_settle_detail set status = 1, create_time = #{nowDate} where id = #{costSettleDetailId}")
     void finishBySettleId(@Param(value = "costSettleDetailId") String costSettleDetailId, @Param(value = "nowDate") String nowDate);
+
+    @Insert("insert into cost_settle_detail (id, member_id, settle_amount, user_id, create_time, status) values (#{id}, #{memberId}, #{settleAmount}, #{userId}, #{createTime}, #{status})")
+    void save(CostSettleDetail costSettleDetail);
 }
 
 

@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.inspur.entity.Prescribe;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 public interface PrescribeService {
@@ -15,6 +16,6 @@ public interface PrescribeService {
 
     PageInfo<Prescribe> getPrescribeListByCondition(Prescribe prescribe, Integer pageNum, Integer pageSize);
 
-    void sendMedicineById(String id);
+    void sendMedicineById(String id, HttpServletRequest request);
 
 }
