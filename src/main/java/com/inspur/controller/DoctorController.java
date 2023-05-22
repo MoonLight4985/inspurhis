@@ -1,7 +1,9 @@
 package com.inspur.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.inspur.entity.Depart;
 import com.inspur.entity.Doctor;
+import com.inspur.service.DepartService;
 import com.inspur.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,12 +13,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Controller
 @RequestMapping("doctor")
 public class DoctorController {
     @Autowired
     private DoctorService doctorService;
+
+    @Autowired
+    private DepartService departService;
 
     @PostMapping("save")
     public String save(Doctor doctor, HttpServletRequest request) {
@@ -37,6 +43,8 @@ public class DoctorController {
         System.out.println(doctor);
         PageInfo<Doctor> pageInfo = doctorService.getDoctorByCondition(doctor, pageNum, pageSize);
         System.out.println(pageInfo);
+        List<Depart> allDepart = departService.getAllDepart();
+        request.setAttribute("departList", allDepart);
         request.setAttribute("pageInfo", pageInfo);
         return "yslist";
     }
@@ -48,9 +56,12 @@ public class DoctorController {
 
     @GetMapping("findDoctorById")
     public String findDoctorById(String id, HttpServletRequest request) {
-        Doctor doctor = doctorService.findDoctorById(id);
+        Doctor doctor = new Doctor();
+        if (id != null)
+            doctor = doctorService.findDoctorById(id);
+        List<Depart> allDepart = departService.getAllDepart();
+        request.setAttribute("departList", allDepart);
         request.setAttribute("doctor", doctor);
-        System.out.println("save" + doctor);
         return "ysadd";
     }
 }

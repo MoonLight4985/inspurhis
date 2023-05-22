@@ -3,11 +3,8 @@ package com.inspur.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.inspur.entity.Depart;
-import com.inspur.entity.Depart;
-import com.inspur.entity.Users;
 import com.inspur.mapper.DepartMapper;
 import com.inspur.service.DepartService;
-import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,7 +28,6 @@ public class DepartServiceImpl implements DepartService {
     }
 
     boolean save(Depart depart) {
-        depart.setUserId("34234");
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
         depart.setCreateTime(simpleDateFormat.format(new Date()));
         return departMapper.save(depart) > 0;
@@ -60,4 +56,8 @@ public class DepartServiceImpl implements DepartService {
         return depart;
     }
 
+    @Override
+    public List<Depart> getAllDepart() {
+        return departMapper.findDepartByCondition(new Depart());
+    }
 }

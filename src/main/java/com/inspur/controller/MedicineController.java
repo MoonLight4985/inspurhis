@@ -35,7 +35,6 @@ public class MedicineController {
         if (updateMedicine != null) {
             medicine.setId(updateMedicine.getId());
         }
-        System.out.println("cang" + medicine);
         boolean flag = medicineService.saveOrUpdateMedicine(medicine);
 
         return "redirect:/medicine/list";

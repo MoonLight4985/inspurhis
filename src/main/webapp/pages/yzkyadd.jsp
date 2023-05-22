@@ -46,7 +46,7 @@
             <div class="pageTitle">医生诊断药品添加</div>
             <div class="pageInfo">
                 <table>
-                    <tr>
+                    <tr hidden>
                         <td width="10%" align="right">registerOrderId</td>
                         <td width="50%"><input type="text" id="registerOrderId" name="registerOrderId" value="${registerOrderId}"/></td>
                         <td width="10%" align="right">doctorAdviceId</td>

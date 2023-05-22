@@ -63,4 +63,9 @@ public class UsersServiceImpl implements UsersService {
         Users users = usersMapper.findUsersById(id);
         return users;
     }
+
+    @Override
+    public List<Users> getAllUsers() {
+        return usersMapper.findUsersByCondition(new Users());
+    }
 }

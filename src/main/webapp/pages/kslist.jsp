@@ -65,7 +65,10 @@
                 <tr>
                     <td>${depart.id}</td>
                     <td>${depart.name}</td>
-                    <td>${depart.userId}</td>
+                    <td>
+                        <c:forEach items="${userList}" var="user">
+                            <c:if test="${user.id == depart.userId}">${user.username}</c:if>
+                        </c:forEach></td>
                     <td>${depart.createTime}</td>
                     <td>
                         <a onclick="modify(${depart.id})"><img src="../images/icon/edit.png" width="16"

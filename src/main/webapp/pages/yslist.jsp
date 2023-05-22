@@ -57,14 +57,14 @@
             <div class="querybody">
                 <ul class="seachform">
                     <li><label>医生ID</label><input name="id" value="${doctor.id}" type="text" class="scinput"/></li>
-                    <li><label>医生名称</label><input name="realname" value="${doctor.realname}" type="text" class="scinput"/></li>
+                    <li><label>医生名称</label><input name="realname" value="${doctor.realname}" type="text"
+                                                  class="scinput"/></li>
                     <li><label>科室</label>  <!-- 从数据库科室表里面查询出科室id和科室名称，组合成下拉框 -->
                         <select style="width:150px;height:32px;" name="departId">
                             <option value="0">请选择</option>
-                            <option value="1">外科</option>
-                            <option value="2">内科</option>
-                            <option value="3">神经科</option>
-                            <option value="4">心脏科</option>
+                            <c:forEach items="${departList}" var="depart">
+                                <option value="${depart.id}">${depart.name}</option>
+                            </c:forEach>
                         </select>
                     </li>
                     <li><label>&nbsp;</label><input name="" type="submit" class="scbtn" value="查询"/></li>
@@ -73,7 +73,8 @@
         </div>
     </form>
     <div class="pageColumn">
-        <div class="pageButton"><a href="${pageContext.request.contextPath}/pages/ysadd.jsp"><img src="../images/t01.png" title="新增"/></a><span>医生列表</span>
+        <div class="pageButton"><a href="${pageContext.request.contextPath}/doctor/findDoctorById"><img
+                src="../images/t01.png" title="新增"/></a><span>医生列表</span>
         </div>
         <table>
             <thead>
@@ -96,15 +97,21 @@
                     <td>${doctor.name}</td>
                     <td>${doctor.password}</td>
                     <td>${doctor.realname}</td>
-                    <td>${doctor.departId}</td>
+                    <td>
+                        <c:forEach items="${departList}" var="depart">
+                            <c:if test="${depart.id == doctor.departId}">${depart.name}</c:if>
+                        </c:forEach>
+                    </td>
                     <td>${doctor.positional}</td>
                     <td>${doctor.tel}</td>
                     <td>${doctor.age}</td>
                     <td>${doctor.sex}</td>
                     <td>山东济南历城区</td>
                     <td>
-                        <a onclick="modify(${doctor.id})"><img src="../images/icon/edit.png" width="16" height="16"/></a>
-                        <a onclick="deletes(${doctor.id})"><img src="../images/icon/del.png" width="16" height="16"/></a>
+                        <a onclick="modify(${doctor.id})"><img src="../images/icon/edit.png" width="16"
+                                                               height="16"/></a>
+                        <a onclick="deletes(${doctor.id})"><img src="../images/icon/del.png" width="16"
+                                                                height="16"/></a>
                     </td>
                 </tr>
             </c:forEach>

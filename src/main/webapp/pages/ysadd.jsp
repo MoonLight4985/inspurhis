@@ -62,8 +62,11 @@
                         <td><input type="text" id="realname" name="realname" value="${doctor.realname}"/></td>
                         <td align="right">所属科室</td>
                         <td>
-                            <select id="departid" name="departId">
-<%--                                <option value="0" ${doctor.departId=0 ? 'selected': ''}>请选择</option>--%>
+                            <select id="departId" name="departId">
+                                <option value="0" ${doctor.departId==0 ? 'selected': ''}>请选择</option>
+                                <c:forEach items="${departList}" var="depart">
+                                    <option value="${depart.id}">${depart.name}</option>
+                                </c:forEach>
                             </select>
                         </td>
                     </tr>
@@ -84,7 +87,7 @@
                         <td align="right">年龄</td>
                         <td><input type="text" id="age" name="age" value="${doctor.age}"/></td>
                         <td align="right">性别</td>
-                        <td><input type="text" id="sex" name="sex" value="${sex}"}/></td>
+                        <td><input type="text" id="sex" name="sex" value="${sex}"/></td>
                     </tr>
                     <tr>
                         <td align="right">家庭住址</td>
