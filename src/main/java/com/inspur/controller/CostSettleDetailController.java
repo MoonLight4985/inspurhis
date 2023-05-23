@@ -53,6 +53,10 @@ public class CostSettleDetailController {
         if (queryExtends.getRole().equals("3"))
             costSettleDetail.setMemberId(queryExtends.getId());
         costSettleDetail.setStatus("0");
+        List<Member> allMember = memberService.getAllMember();
+        List<Users> allUsers = usersService.getAllUsers();
+        request.getSession().setAttribute("userList", allUsers);
+        request.getSession().setAttribute("memberList", allMember);
         PageInfo<CostSettleDetail> pageInfo = costSettleDetailService.getCostSettleDetailByCondition(costSettleDetail, pageNum, pageSize);
         request.setAttribute("pageInfo", pageInfo);
         return "settle";

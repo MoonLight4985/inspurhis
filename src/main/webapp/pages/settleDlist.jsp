@@ -47,7 +47,7 @@
 
 <body>
 <div id="contentWrap">
-    <form>
+    <form action="${pageContext.request.contextPath}/costSettleDetail/list" method="get">
         <div id="widget table-widget">
             <div class="pageTitle">费用结算明细查询</div>
             <div class="querybody">
@@ -75,15 +75,15 @@
             <tbody>
             <c:forEach items="${pageInfo.list}" var="costSettleDetail">
                 <tr>
-                    <td>${costSettleDetail.id}</td>
-                    <td>${costSettleDetail.memberId}
+                    <td>${costSettleDetail.memberId}</td>
+                    <td>
                         <c:forEach items="${memberList}" var="member">
                             <c:if test="${member.id == costSettleDetail.memberId}">${member.name}</c:if>
                         </c:forEach>
                     </td>
                     <td>---</td>
                     <td>${costSettleDetail.settleAmount}</td>
-                    <td>${costSettleDetail.userId}
+                    <td>
                         <c:forEach items="${userList}" var="user">
                             <c:if test="${user.id == costSettleDetail.userId}">${user.realname}</c:if>
                         </c:forEach>

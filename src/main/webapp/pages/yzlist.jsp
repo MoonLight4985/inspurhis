@@ -69,7 +69,7 @@
     <!--表格控件 -->
 
     <div class="pageColumn">
-        <div class="pageButton"><a href="${pageContext.request.contextPath}/doctorduty/toAddDoctorDuty"><img src="../images/t01.png" title="新增"/></a><span>医生诊断结果列表</span>
+        <div class="pageButton"><a href="${pageContext.request.contextPath}/doctorAdvice/toAddDoctorAdvice"><img src="../images/t01.png" title="新增"/></a><span>医生诊断结果列表</span>
         </div>
         <table>
             <thead>
@@ -134,7 +134,7 @@
                         href="${pageContext.request.contextPath}/doctorAdvice/list?pageSize=15&registerOrderId=${doctorAdvice.registerOrderId}&memberId=${doctorAdvice.memberId}&createTime=${doctorAdvice.createTime}">15</a>
                 </li>
                 <li class="${pageInfo.pageSize==20 ?'active':''}"><a
-                        href="${pageContext.request.contextPath}/doctorAdvice/list?pageSize=2&registerOrderId=${doctorAdvice.registerOrderId}&memberId=${doctorAdvice.memberId}&createTime=${doctorAdvice.createTime}">20</a>
+                        href="${pageContext.request.contextPath}/doctorAdvice/list?pageSize=20&registerOrderId=${doctorAdvice.registerOrderId}&memberId=${doctorAdvice.memberId}&createTime=${doctorAdvice.createTime}">20</a>
                 </li>
             </ul>
         </div>

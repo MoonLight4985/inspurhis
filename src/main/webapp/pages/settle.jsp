@@ -10,26 +10,27 @@
 
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>无标题文档</title>
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" rel="stylesheet" type="text/css"/>
     <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript">
 
-        function settle(id, money){
-            window.location.href="${pageContext.request.contextPath}/member/payById?money=" + money + "&costSettleDetailId=" + id;
+        function settle(id, money) {
+            window.location.href = "${pageContext.request.contextPath}/member/payById?money=" + money + "&costSettleDetailId=" + id;
         }
-        $(function(){
+
+        $(function () {
             $('tbody tr:odd').addClass("trLight");
 
-            $(".select-all").click(function(){
-                if($(this).attr("checked")){
-                    $(".checkBox input[type=checkbox]").each(function(){
+            $(".select-all").click(function () {
+                if ($(this).attr("checked")) {
+                    $(".checkBox input[type=checkbox]").each(function () {
                         $(this).attr("checked", true);
                     });
-                }else{
-                    $(".checkBox input[type=checkbox]").each(function(){
+                } else {
+                    $(".checkBox input[type=checkbox]").each(function () {
                         $(this).attr("checked", false);
                     });
                 }
@@ -39,7 +40,7 @@
     </script>
     <style type="text/css">
         body {
-            background:#FFF
+            background: #FFF
         }
     </style>
 </head>
@@ -51,9 +52,9 @@
         <div class="pageTitle">费用结算</div>
         <div class="querybody">
             <ul class="seachform">
-                <li><label>会员ID</label><input name="" type="text" class="scinput" /></li>
-                <li><label>会员名称</label><input name="" type="text" class="scinput" /></li>
-                <li><label>挂号号</label><input name="" type="text" class="scinput" /></li>
+                <li><label>会员ID</label><input name="" type="text" class="scinput"/></li>
+                <li><label>会员名称</label><input name="" type="text" class="scinput"/></li>
+                <li><label>挂号号</label><input name="" type="text" class="scinput"/></li>
                 <li><label>&nbsp;</label><input name="" type="submit" class="scbtn" value="查询"/></li>
             </ul>
         </div>
@@ -72,12 +73,18 @@
                 <c:forEach items="${pageInfo.list}" var="settle">
                     <tr>
                         <td>${settle.memberId}</td>
-                        <td>刘二</td>
+                        <td>
+                            <c:forEach items="${memberList}" var="member">
+                                <c:if test="${member.id == costSettleDetail.memberId}">${member.name}</c:if>
+                            </c:forEach>
+                        </td>
                         <td></td>
                         <td></td>
                         <td>${settle.settleAmount}</td>
                         <td>
-                            <a onclick="settle(${settle.id}, ${settle.settleAmount})"><img src="../images/settle.jpg" width="16" height="16" title="结算"/></a>
+                            <a onclick="settle(${settle.id}, ${settle.settleAmount})"><img src="../images/settle.jpg"
+                                                                                           width="16" height="16"
+                                                                                           title="结算"/></a>
                         </td>
                     </tr>
                 </c:forEach>

@@ -23,7 +23,7 @@
         select * from payment_detail
         <where>
             <if test="memberId!=null and memberId!=''">
-                and id= #{id}
+                and member_id= #{memberId}
             </if>
         </where>
     </select>

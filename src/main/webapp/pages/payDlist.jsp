@@ -46,7 +46,7 @@
             <div class="pageTitle">缴费明细查询</div>
             <div class="querybody">
                 <ul class="seachform">
-                    <li><label>会员ID</label><input name="memberId" type="text" class="scinput"/></li>
+                    <li><label>会员ID</label><input name="memberId" type="text" class="scinput" value="${payment.memberId}"/></li>
                     <li><label>&nbsp;</label><input name="" type="submit" class="scbtn" value="查询"/></li>
                 </ul>
             </div>
@@ -117,7 +117,7 @@
                         href="${pageContext.request.contextPath}/payment/list?pageSize=5&memberId=${payment.memberId}">5</a>
                 </li>
                 <li class="${pageInfo.pageSize==10 ?'active':''}"><a
-                        href="${pageContext.request.contextPath}/payment/list?pageSize=10&memberId=${payment.memberId}}">10</a>
+                        href="${pageContext.request.contextPath}/payment/list?pageSize=10&memberId=${payment.memberId}">10</a>
                 </li>
                 <li class="${pageInfo.pageSize==15 ?'active':''}"><a
                         href="${pageContext.request.contextPath}/payment/list?pageSize=15&memberId=${payment.memberId}">15</a>
