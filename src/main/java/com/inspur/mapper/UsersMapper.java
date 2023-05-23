@@ -1,6 +1,7 @@
 package com.inspur.mapper;
 
 import com.inspur.entity.Users;
+import jdk.internal.org.objectweb.asm.tree.analysis.Value;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -20,4 +21,7 @@ public interface UsersMapper {
     int update(Users users);
 
     Users findUsersById(String id);
+
+    @Update("update users set password=#{password} where id = #{id}")
+    void updatePassword(@Param(value = "id")String id, @Param(value = "password") String password);
 }

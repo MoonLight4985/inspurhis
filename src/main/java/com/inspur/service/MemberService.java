@@ -16,4 +16,5 @@ public interface MemberService {
 
     List<Member> getAllMember();
 
+    void updatePassword(String id, String password);
 }

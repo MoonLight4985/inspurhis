@@ -5,13 +5,15 @@
   Time: 21:54
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>无标题文档</title>
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <script type="text/javascript">
         $(function(){
             $('tbody tr:odd').addClass("trLight");
@@ -38,7 +40,7 @@
 </head>
 
 <body>
-<form method="post" action="" method="post" name="ThisForm">
+<form method="post" action="${pageContext.request.contextPath}/updatepwd" name="ThisForm">
     <div id="contentWrap">
         <!--表格控件 -->
         <div id="widget table-widget">
@@ -63,6 +65,9 @@
                     </tr>
                     <tr>
                         <td colspan="2"  align="center"><input type="submit" value="确定" /></td>
+                    </tr>
+                    <tr>
+                        <td width="20%" align="right">${message}</td>
                     </tr>
                 </table>
             </div>

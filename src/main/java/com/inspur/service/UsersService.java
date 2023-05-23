@@ -15,4 +15,6 @@ public interface UsersService {
     Users findUserById(String id);
 
     List<Users> getAllUsers();
+
+    void updatePassword(String id, String password);
 }

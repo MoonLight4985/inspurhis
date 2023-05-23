@@ -21,4 +21,7 @@ public interface DoctorMapper {
 
     @Update("update doctor set name = #{name}, password = #{password}, realname = #{realname}, depart_id = #{departId}, positional = #{positional}, sex = #{sex}, tel = #{tel}, age = #{age} where id = #{id}")
     int update(Doctor doctors);
+
+    @Update("update doctor set password=#{password} where id = #{id}")
+    void updatePassword(@Param(value = "id") String id, @Param(value = "password") String password);
 }

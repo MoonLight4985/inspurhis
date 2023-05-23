@@ -63,4 +63,9 @@ public class MemberServiceImpl implements MemberService {
     public List<Member> getAllMember() {
         return membersMapper.findMemberByCondition(new Member());
     }
+
+    @Override
+    public void updatePassword(String id, String password) {
+        membersMapper.updatePassword(id, password);
+    }
 }

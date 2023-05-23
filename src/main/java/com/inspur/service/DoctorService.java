@@ -15,4 +15,6 @@ public interface DoctorService {
     Doctor findDoctorById(String id);
 
     List<Doctor> getAllDoctor();
+
+    void updatePassword(String id, String password);
 }

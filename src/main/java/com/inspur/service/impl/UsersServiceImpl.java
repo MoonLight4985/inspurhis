@@ -68,4 +68,9 @@ public class UsersServiceImpl implements UsersService {
     public List<Users> getAllUsers() {
         return usersMapper.findUsersByCondition(new Users());
     }
+
+    @Override
+    public void updatePassword(String id, String password) {
+        usersMapper.updatePassword(id, password);
+    }
 }

@@ -7,10 +7,10 @@ import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface QueryExtendsMapper {
-    @Select(" SELECT id, username,role FROM users  WHERE username=#{name} AND PASSWORD =#{password} " +
+    @Select(" SELECT id, username, role, password FROM users  WHERE username=#{name} AND PASSWORD =#{password} " +
             " UNION " +
-            " SELECT id, name,role FROM member WHERE name=#{name} AND PASSWORD =#{password} " +
+            " SELECT id, name, role, password FROM member WHERE name=#{name} AND PASSWORD =#{password} " +
             " UNION " +
-            " SELECT id, name,role FROM doctor WHERE  name=#{name} AND PASSWORD =#{password} ")
-   QueryExtends login(@Param(value = "name") String name,@Param(value = "password") String password);
+            " SELECT id, name, role, password FROM doctor WHERE  name=#{name} AND PASSWORD =#{password} ")
+    QueryExtends login(@Param(value = "name") String name, @Param(value = "password") String password);
 }

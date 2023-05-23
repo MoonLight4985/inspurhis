@@ -61,4 +61,9 @@ public class DoctorServiceImpl implements DoctorService {
     public List<Doctor> getAllDoctor() {
         return doctorsMapper.findDoctorByCondition(new Doctor());
     }
+
+    @Override
+    public void updatePassword(String id, String password) {
+        doctorsMapper.updatePassword(id, password);
+    }
 }

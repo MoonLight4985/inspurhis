@@ -21,4 +21,7 @@ public interface MemberMapper {
 
     @Select("select * from member where id = #{id}")
     Member findMemberById(String id);
+
+    @Update("update member set password=#{password} where id = #{id}")
+    void updatePassword(@Param(value = "id") String id, @Param(value = "password") String password);
 }
