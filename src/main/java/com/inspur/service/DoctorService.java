@@ -17,4 +17,7 @@ public interface DoctorService {
     List<Doctor> getAllDoctor();
 
     void updatePassword(String id, String password);
+
+    List<Doctor> getDoctorByDepartId(String departId);
+
 }

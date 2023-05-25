@@ -66,4 +66,11 @@ public class DoctorServiceImpl implements DoctorService {
     public void updatePassword(String id, String password) {
         doctorsMapper.updatePassword(id, password);
     }
+
+    @Override
+    public List<Doctor> getDoctorByDepartId(String departId) {
+        Doctor doctor = new Doctor();
+        doctor.setDepartId(departId);
+        return doctorsMapper.findDoctorByCondition(doctor);
+    }
 }

@@ -1,15 +1,19 @@
 package com.inspur.controller;
 
 import com.github.pagehelper.PageInfo;
+import com.inspur.entity.Doctor;
 import com.inspur.entity.Medicine;
+import com.inspur.entity.Member;
 import com.inspur.entity.Prescribe;
-import com.inspur.service.MedicineService;
-import com.inspur.service.PrescribeService;
+import com.inspur.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.print.Doc;
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -20,11 +24,24 @@ public class PrescribeController {
     @Autowired
     private MedicineService medicineService;
 
+    @Autowired
+    private RegisterOrderService registerOrderService;
+
+    @Autowired
+    private MemberService memberService;
+
+    @Autowired
+    private DoctorService doctorService;
+
     @GetMapping("/list")
-    public String getPrescribeListByOrderId(String registerOrderId, HttpServletRequest request) {
+    public String getPrescribeListByOrderId(String registerOrderId, String doctorAdviceId, HttpServletRequest request) {
         List<Prescribe> prescribeListByOrderId = prescribeService.getPrescribeListByOrderId(registerOrderId);
         request.setAttribute("pageInfo", prescribeListByOrderId);
         List<Medicine> medicineList = medicineService.getAllMedicine();
+        request.getSession().setAttribute("registerOrderId", registerOrderId);
+        request.getSession().setAttribute("doctorAdviceId", doctorAdviceId);
+        System.out.println(registerOrderId);
+        System.out.println(doctorAdviceId);
         request.setAttribute("medicineList", medicineList);
         return "kylist";
     }
@@ -37,8 +54,12 @@ public class PrescribeController {
 
     @PostMapping("/save")
     public String savePrescribe(Prescribe prescribe) {
+        prescribe.setMemberId(registerOrderService.findOrderById(prescribe.getRegisterOrderId()).getMemberId());
+        prescribe.setDoctorId(registerOrderService.findOrderById(prescribe.getRegisterOrderId()).getDoctorId());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        prescribe.setCreateTime(simpleDateFormat.format(new Date()));
         prescribeService.save(prescribe);
-        return "redirect:/prescribe/list?registerOrderId=" + prescribe.getRegisterOrderId();
+        return "redirect:/prescribe/list?registerOrderId=" + prescribe.getRegisterOrderId() + "&doctorAdviceId=" + prescribe.getDoctorAdviceId();
     }
 
     @GetMapping("toAdd")
@@ -56,6 +77,10 @@ public class PrescribeController {
                               @RequestParam(defaultValue = "1") Integer pageNum,
                               @RequestParam(defaultValue = "5") Integer pageSize) {
         PageInfo<Prescribe> pageInfo = prescribeService.getPrescribeListByCondition(prescribe, pageNum, pageSize);
+        List<Member> allMember = memberService.getAllMember();
+        List<Doctor> allDoctor = doctorService.getAllDoctor();
+        request.getSession().setAttribute("memberList", allMember);
+        request.getSession().setAttribute("doctorList", allDoctor);
         request.setAttribute("pageInfo", pageInfo);
         return "ypfflist";
     }

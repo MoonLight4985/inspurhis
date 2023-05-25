@@ -60,4 +60,14 @@ public class RegisterOrderServiceImpl implements RegisterOrderService {
         return orders;
     }
 
+    @Override
+    public List<RegisterOrder> findAllOrder() {
+        return ordersMapper.findOrderByCondition(new RegisterOrder());
+    }
+
+    @Override
+    public void acOrderById(String registerOrderId) {
+        ordersMapper.acOrderById(registerOrderId);
+    }
+
 }

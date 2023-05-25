@@ -86,9 +86,8 @@
             <%--患者看到的页面--%>
             <c:if test="${sessionScope.users.role==3}">
                 <ul>
-                    <li><a href="${pageContext.request.contextPath}/pages/yyghadd.jsp" target="right">预约挂号</a></li>
+                    <li><a href="${pageContext.request.contextPath}/registerorder/toAddOrder" target="right">预约挂号</a></li>
                     <li><a href="${pageContext.request.contextPath}/registerorder/list" target="right">挂号管理</a></li>
-                    <li><a href="${pageContext.request.contextPath}/doctorduty/list" target="right">医生值班管理</a></li>
                     <li><a href="${pageContext.request.contextPath}/costSettleDetail/listByMemberId"
                            target="right">费用结算</a></li>
                     <li><a href="${pageContext.request.contextPath}/payment/list" target="right">缴费明细查询</a></li>
@@ -113,14 +112,14 @@
                     <li><a href="${pageContext.request.contextPath}/users/list" target="right">用户管理</a></li>
                     <li><a href="${pageContext.request.contextPath}/medicine/list" target="right">药品信息管理</a></li>
                     <li><a href="${pageContext.request.contextPath}/doctor/list" target="right">医生管理</a></li>
-                    <li><a href="${pageContext.request.contextPath}/prescribe/sendList" target="right">药品发放</a></li>
+<%--                    <li><a href="${pageContext.request.contextPath}/prescribe/sendList" target="right">药品发放</a></li>--%>
                     <li><a href="${pageContext.request.contextPath}/depart/list" target="right">科室管理</a></li>
                     <li><a href="${pageContext.request.contextPath}/member/list" target="right">会员管理</a></li>
                     <!-- 挂号人员独有 -->
-                    <li><a href="${pageContext.request.contextPath}/registerorder/toAddOrder" target="right">预约挂号</a></li>
+<%--                    <li><a href="${pageContext.request.contextPath}/registerorder/toAddOrder" target="right">预约挂号</a></li>--%>
                     <li><a href="${pageContext.request.contextPath}/registerorder/list" target="right">挂号管理</a></li>
                     <li><a href="${pageContext.request.contextPath}/doctorduty/list" target="right">医生值班管理</a></li>
-                    <li><a href="${pageContext.request.contextPath}/doctorAdvice/list" target="right">医生诊断管理</a></li>
+<%--                    <li><a href="${pageContext.request.contextPath}/doctorAdvice/list" target="right">医生诊断管理</a></li>--%>
 <%--                    <li><a href="${pageContext.request.contextPath}/costSettleDetail/listByMemberId"--%>
 <%--                           target="right">费用结算</a></li>--%>
                     <li><a href="${pageContext.request.contextPath}/payment/list" target="right">缴费明细查询</a></li>

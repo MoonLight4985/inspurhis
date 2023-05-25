@@ -56,7 +56,18 @@
                         </select>
                         </td>
                         <td width="10%" align="right">挂号号</td>
-                        <td width="50%"><input type="text" id="registerOrderId" name="registerOrderId" /></td>
+                        <td width="50%">
+                            <select name="registerOrderId" id="registerOrderId">
+                                <option value="">-请选择-</option>
+                                <c:forEach items="${sessionScope.OrderList}" var="order">
+                                    <option value="${order.id}">
+                                            ${order.id} -
+                                        <c:forEach items="${sessionScope.memberList}" var="member">
+                                            <c:if test="${order.memberId == member.id}">${member.name}</c:if>
+                                        </c:forEach>
+                                    </option>
+                                </c:forEach>
+                            </select>
                     </tr>
                     <tr>
                         <td width="20%" align="right">诊断</td>

@@ -19,4 +19,10 @@ public class Prescribe {
 
     private String status;
 
+    private String memberId;
+
+    private String doctorId;
+
+    private String createTime;
+
 }

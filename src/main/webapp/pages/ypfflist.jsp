@@ -70,9 +70,17 @@
         <c:forEach items="${pageInfo.list}" var="prescribe">
           <tr>
             <td>${prescribe.registerOrderId}</td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td>
+                <c:forEach items="${memberList}" var="member">
+                  <c:if test="${prescribe.memberId == member.id}">${member.name}</c:if>
+                </c:forEach>
+            </td>
+            <td>
+              <c:forEach items="${sessionScope.doctorList}" var="doctor">
+                <c:if test="${prescribe.doctorId == doctor.id}">${doctor.name}</c:if>
+              </c:forEach>
+            </td>
+            <td>${prescribe.createTime}</td>
             <td><a onclick="ypff(${prescribe.id})"><img src="../images/icon/edit2.png" width="16" height="16" /></a></td>
           </tr>
         </c:forEach>

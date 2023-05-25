@@ -22,8 +22,8 @@
             window.location.href = "${pageContext.request.contextPath}/doctorAdvice/deleteByDoctorAdviceId?id=" + id;
         }
 
-        function ky(id) {
-            window.location.href = "${pageContext.request.contextPath}/prescribe/list?registerOrderId=" + id;
+        function ky(id, doctorAdviceId) {
+            window.location.href = "${pageContext.request.contextPath}/prescribe/list?registerOrderId=" + id + "&doctorAdviceId=" + doctorAdviceId;
         }
 
         $(function () {
@@ -78,7 +78,7 @@
             <th width="">诊断人</th>
             <th width="">诊断时间</th>
             <th width="">诊断结果</th>
-            <th width="">药方</th>
+<%--            <th width="">药方</th>--%>
             <th width="10%">操作</th>
             <th width="10%">开药信息</th>
             </thead>
@@ -87,12 +87,16 @@
                 <tr>
                     <td>${doctorAdvice.id}</td>
                     <td>${doctorAdvice.memberId}</td>
-                    <td>${doctorAdvice.doctorId}</td>
+                    <td>
+                        <c:forEach items="${doctorList}" var="doctor">
+                            <c:if test="${doctor.id == doctorAdvice.doctorId}">${doctor.name}</c:if>
+                        </c:forEach>
+                    </td>
                     <td>${doctorAdvice.createTime}</td>
                     <td>${doctorAdvice.prescription}</td>
-                    <td>西药治疗：皮炎平</td>
+<%--                    <td>西药治疗：皮炎平</td>--%>
                     <td><a onclick="deletes(${doctorAdvice.id})"><img src="../images/icon/del.png" width="16" height="16"/></a></td>
-                    <td><a onclick="ky(${doctorAdvice.registerOrderId})"><img src="../images/icon/edit2.png" width="16" height="16"/></a></td>
+                    <td><a onclick="ky(${doctorAdvice.registerOrderId}, ${doctorAdvice.id})"><img src="../images/icon/edit2.png" width="16" height="16"/></a></td>
                 </tr>
 
             </c:forEach>

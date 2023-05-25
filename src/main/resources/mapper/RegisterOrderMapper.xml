@@ -18,6 +18,7 @@
             <if test="roTime!=null and roTime!=''">
                 and ro_time= #{roTime}
             </if>
+                and status = 1
         </where>
     </select>
 </mapper>

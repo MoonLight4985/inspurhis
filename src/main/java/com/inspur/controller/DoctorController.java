@@ -64,4 +64,11 @@ public class DoctorController {
         request.setAttribute("doctor", doctor);
         return "ysadd";
     }
+
+    @GetMapping("getDoctorByDepartId")
+    public String getDoctorByDepartId(String departId, HttpServletRequest request) {
+        List<Doctor> doctors = doctorService.getDoctorByDepartId(departId);
+        request.setAttribute("doctorList", doctors);
+        return "ghadd";
+    }
 }

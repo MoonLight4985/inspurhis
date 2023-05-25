@@ -86,7 +86,7 @@
                 </c:forEach>
                 <tr>
                     <td colspan="6"><input type="button"
-                                           onclick="ky(${pageInfo[0].registerOrderId}, ${pageInfo[0].doctorAdviceId})"
+                                           onclick="ky(${sessionScope.registerOrderId}, ${sessionScope.doctorAdviceId})"
                                            value="新增药品"/>&nbsp;<input type="button" value="返回" onclick="back()"/></td>
                 </tr>
                 </tbody>

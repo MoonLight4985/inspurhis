@@ -14,7 +14,7 @@ public interface PrescribeMapper {
     @Delete("delete from prescribe where id = #{id}")
     boolean deleteByPrescribeId(String id);
 
-    @Insert("insert into prescribe (id, doctor_advice_id, register_order_id, medicine_id, number, description, status) values (#{id}, #{doctorAdviceId}, #{registerOrderId}, #{medicineId}, #{number}, #{description}, #{status})")
+    @Insert("insert into prescribe (id, doctor_advice_id, register_order_id, medicine_id, number, description, status, member_id, doctor_id, create_time) values (#{id}, #{doctorAdviceId}, #{registerOrderId}, #{medicineId}, #{number}, #{description}, #{status}, #{memberId}, #{doctorId}, #{createTime})")
     int save(Prescribe prescribe);
 
     List<Prescribe> getPrescribeListByCondition(Prescribe prescribe);

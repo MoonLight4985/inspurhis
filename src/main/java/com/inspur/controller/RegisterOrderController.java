@@ -1,10 +1,7 @@
 package com.inspur.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.inspur.entity.Depart;
-import com.inspur.entity.Doctor;
-import com.inspur.entity.Member;
-import com.inspur.entity.RegisterOrder;
+import com.inspur.entity.*;
 import com.inspur.service.DepartService;
 import com.inspur.service.DoctorService;
 import com.inspur.service.MemberService;
@@ -51,6 +48,10 @@ public class RegisterOrderController {
                                       @RequestParam(defaultValue = "1") Integer pageNum,
                                       @RequestParam(defaultValue = "5") Integer pageSize) {
         System.out.println(registerOrder);
+        QueryExtends users = (QueryExtends) request.getSession().getAttribute("users");
+        if (users.getRole().equals("3")) {
+            registerOrder.setMemberId(users.getId());
+        }
         PageInfo<RegisterOrder> pageInfo = registerOrderService.getOrderByCondition(registerOrder, pageNum, pageSize);
         List<Member> allMember = memberService.getAllMember();
         List<Depart> allDepart = departService.getAllDepart();

@@ -10,21 +10,21 @@
 
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>无标题文档</title>
-    <link href="../css/style.css" rel="stylesheet" type="text/css" />
+    <link href="../css/style.css" rel="stylesheet" type="text/css"/>
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/rl.js"></script>
     <script type="text/javascript">
-        $(function(){
+        $(function () {
             $('tbody tr:odd').addClass("trLight");
-            $(".select-all").click(function(){
-                if($(this).attr("checked")){
-                    $(".checkBox input[type=checkbox]").each(function(){
+            $(".select-all").click(function () {
+                if ($(this).attr("checked")) {
+                    $(".checkBox input[type=checkbox]").each(function () {
                         $(this).attr("checked", true);
                     });
-                }else{
-                    $(".checkBox input[type=checkbox]").each(function(){
+                } else {
+                    $(".checkBox input[type=checkbox]").each(function () {
                         $(this).attr("checked", false);
                     });
                 }
@@ -33,7 +33,7 @@
     </script>
     <style type="text/css">
         body {
-            background:#FFF
+            background: #FFF
         }
     </style>
 </head>
@@ -51,11 +51,11 @@
                         <td width="20%"><select id="memberId" name="memberId">
                             <option value="0">请选择</option>
                             <c:forEach items="${memberList}" var="member">
-                                <option value="${member.id}">${member.name}</option>
+                                <option value="${member.id}" ${member.id == sessionScope.users.id?'selected':'' }>${member.name}</option>
                             </c:forEach>
                         </select></td>
                         <td width="10%" align="right">科室</td>
-                        <td width="48%" ><select id="ks" name="departId">
+                        <td width="48%"><select id="ks" name="departId" onchange="changeDoctors(this.value)">
                             <option value="0">请选择</option>
                             <c:forEach items="${departList}" var="depart">
                                 <option value="${depart.id}">${depart.name}</option>
@@ -65,7 +65,7 @@
                     </tr>
                     <tr>
                         <td width="20%" align="right">医生</td>
-                        <td width="48%" ><select id="userid" name="doctorId">
+                        <td width="48%"><select id="doctors" name="doctorId">
                             <option value="0">请选择</option>
                             <c:forEach items="${doctorList}" var="doctor">
                                 <option value="${doctor.id}">${doctor.name}</option>
@@ -77,13 +77,13 @@
                     </tr>
                     <tr>
                         <td width="10%" align="right">挂号时间</td>
-                        <td width="48%" ><input type="date" name="roTime" id="ghtime""/></td>
+                        <td width="48%"><input type="date" name="roTime" id="ghtime""/></td>
                         <td width=""></td>
                         <td width=""></td>
                         <td width=""></td>
                     </tr>
                     <tr>
-                        <td colspan="5" align="center"><input type="submit" value="确定" /></td>
+                        <td colspan="5" align="center"><input type="submit" value="确定"/></td>
                     </tr>
                 </table>
             </div>

@@ -1,10 +1,11 @@
 package com.inspur.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.inspur.entity.DoctorAdvice;
-import com.inspur.entity.Member;
+import com.inspur.entity.*;
 import com.inspur.service.DoctorAdviceService;
+import com.inspur.service.DoctorService;
 import com.inspur.service.MemberService;
+import com.inspur.service.RegisterOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,13 +25,24 @@ public class DoctorAdviceController {
     @Autowired
     private MemberService memberService;
 
+    @Autowired
+    private DoctorService doctorService;
+
+    @Autowired
+    private RegisterOrderService registerOrderService;
+
     @PostMapping("save")
     public String save(DoctorAdvice doctorAdvice, HttpServletRequest request) {
         DoctorAdvice updateDoctorAdvice = (DoctorAdvice) request.getAttribute("doctorAdvice");
         if (updateDoctorAdvice != null) {
             doctorAdvice.setId(updateDoctorAdvice.getId());
         }
+        QueryExtends queryExtends = (QueryExtends) request.getSession().getAttribute("users");
+        doctorAdvice.setDoctorId(queryExtends.getId());
         boolean flag = doctorAdviceService.saveOrUpdateDoctorAdvice(doctorAdvice);
+        if (flag) {
+            registerOrderService.acOrderById(doctorAdvice.getRegisterOrderId());
+        }
 
         return "redirect:/doctorAdvice/list";
     }
@@ -41,6 +53,12 @@ public class DoctorAdviceController {
                                        @RequestParam(defaultValue = "1") Integer pageNum,
                                        @RequestParam(defaultValue = "5") Integer pageSize) {
         PageInfo<DoctorAdvice> pageInfo = doctorAdviceService.getDoctorAdviceByCondition(doctorAdvice, pageNum, pageSize);
+        List<RegisterOrder> allOrder = registerOrderService.findAllOrder();
+        List<Member> allMember = memberService.getAllMember();
+        List<Doctor> allDoctor = doctorService.getAllDoctor();
+        request.getSession().setAttribute("doctorList", allDoctor);
+        request.getSession().setAttribute("memberList", allMember);
+        request.getSession().setAttribute("OrderList", allOrder);
         request.setAttribute("pageInfo", pageInfo);
         return "yzlist";
     }
