@@ -34,7 +34,10 @@ public class CostSettleDetailController {
                                           @RequestParam(defaultValue = "1") Integer pageNum,
                                           @RequestParam(defaultValue = "5") Integer pageSize) {
         costSettleDetail.setStatus("1");
-
+        QueryExtends queryExtends = (QueryExtends) request.getSession().getAttribute("users");
+        if (queryExtends.getRole().equals("3")) {
+            costSettleDetail.setMemberId(queryExtends.getId());
+        }
         PageInfo<CostSettleDetail> pageInfo = costSettleDetailService.getCostSettleDetailByCondition(costSettleDetail, pageNum, pageSize);
         List<Member> allMember = memberService.getAllMember();
         List<Users> allUsers = usersService.getAllUsers();
