@@ -31,6 +31,28 @@
             });
         });
     </script>
+    <script>
+        function changeDoctors(departId) {
+            jQuery.ajax({
+                url: "${pageContext.request.contextPath}/doctor/getDoctorByDepartId?departId=" + departId,
+                type: "get",
+                dataType: 'json',
+                // async: true,
+                success: function (data) {
+                    var selectorDoctor = document.getElementById("doctorSelector")
+                    while (selectorDoctor.options.length) {
+                        selectorDoctor.remove(0)
+                    }
+                    $.each(data, function (index, item) {
+                        // alert(item.name)
+                        var docOption = new Option(item.name, item.id)
+                        // console.log(docOption)
+                        selectorDoctor.options.add(docOption)
+                    })
+                }
+            })
+        }
+    </script>
     <style type="text/css">
         body {
             background: #FFF
@@ -65,11 +87,11 @@
                     </tr>
                     <tr>
                         <td width="20%" align="right">医生</td>
-                        <td width="48%"><select id="doctors" name="doctorId">
-                            <option value="0">请选择</option>
-                            <c:forEach items="${doctorList}" var="doctor">
-                                <option value="${doctor.id}">${doctor.name}</option>
-                            </c:forEach>
+                        <td width="48%"><select id="doctorSelector" name="doctorId">
+                            <option value="0">-请选择-</option>
+<%--                            <c:forEach items="${doctorList}" var="doctor">--%>
+<%--                                <option value="${doctor.id}">${doctor.name}</option>--%>
+<%--                            </c:forEach>--%>
                         </select></td>
                         <td width="20%" align="right">挂号费用</td>
                         <td width="20%"><input type="text" name="price" id="ghcost" value="6"/></td>

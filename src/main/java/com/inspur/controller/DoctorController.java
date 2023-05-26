@@ -7,13 +7,13 @@ import com.inspur.service.DepartService;
 import com.inspur.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import javax.print.Doc;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("doctor")
@@ -66,9 +66,10 @@ public class DoctorController {
     }
 
     @GetMapping("getDoctorByDepartId")
-    public String getDoctorByDepartId(String departId, HttpServletRequest request) {
+    @ResponseBody
+    public List<Doctor> getDoctorByDepartId(String departId) {
         List<Doctor> doctors = doctorService.getDoctorByDepartId(departId);
-        request.setAttribute("doctorList", doctors);
-        return "ghadd";
+        System.out.println(doctors);
+        return doctors;
     }
 }
