@@ -81,6 +81,7 @@ public class PrescribeServiceImpl implements PrescribeService {
         costSettleDetail.setUserId(queryExtends.getId());//设置操作人ID
         SimpleDateFormat simpleDateFormat1 =new SimpleDateFormat("yyyy-MM-dd");
         costSettleDetail.setCreateTime(simpleDateFormat1.format(new Date()));
+        costSettleDetail.setRegisterOrderId(prescribe.getRegisterOrderId());
         costSettleDetailService.addCostSettleDetail(costSettleDetail);
     }
 }

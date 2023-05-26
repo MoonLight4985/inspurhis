@@ -5,15 +5,17 @@
 <mapper namespace="com.inspur.mapper.CostSettleDetailMapper">
 
     <resultMap id="BaseResultMap" type="com.inspur.entity.CostSettleDetail">
-            <result property="id" column="id" jdbcType="VARCHAR"/>
-            <result property="memberId" column="member_id" jdbcType="VARCHAR"/>
-            <result property="settleAmount" column="settle_amount" jdbcType="INTEGER"/>
-            <result property="userId" column="user_id" jdbcType="VARCHAR"/>
-            <result property="createTime" column="create_time" jdbcType="VARCHAR"/>
+        <result property="id" column="id" jdbcType="VARCHAR"/>
+        <result property="memberId" column="member_id" jdbcType="VARCHAR"/>
+        <result property="settleAmount" column="settle_amount" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="VARCHAR"/>
+        <result property="registerOrderId" column="register_order_id" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,member_id,settle_amount,
+        id
+        ,member_id,settle_amount,
         user_id,create_time
     </sql>
     <select id="findCostSettleDetailByCondition" resultType="com.inspur.entity.CostSettleDetail">

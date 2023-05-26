@@ -2,10 +2,8 @@ package com.inspur.controller;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
-import com.inspur.entity.Member;
-import com.inspur.entity.PaymentDetail;
-import com.inspur.entity.QueryExtends;
-import com.inspur.entity.Users;
+import com.inspur.entity.*;
+import com.inspur.service.DoctorService;
 import com.inspur.service.MemberService;
 import com.inspur.service.PaymentDetailService;
 import com.inspur.service.UsersService;
@@ -30,6 +28,9 @@ public class PaymentDetailController {
     @Autowired
     private UsersService usersService;
 
+    @Autowired
+    private DoctorService doctorService;
+
     @GetMapping("/list")
     public String getpaymentDetailList(PaymentDetail paymentDetail, HttpServletRequest request,
                                        @RequestParam(defaultValue = "1") Integer pageNum,
@@ -41,6 +42,8 @@ public class PaymentDetailController {
         PageInfo<PaymentDetail> paymentDetails = paymentDetailService.getPaymentDetailListByCondition(paymentDetail, pageNum, pageSize);
         List<Member> allMember = memberService.getAllMember();
         List<Users> allUsers = usersService.getAllUsers();
+        List<Doctor> allDoctor = doctorService.getAllDoctor();
+        request.getSession().setAttribute("doctorList", allDoctor);
         request.getSession().setAttribute("userList", allUsers);
         request.getSession().setAttribute("memberList", allMember);
         request.setAttribute("pageInfo", paymentDetails);

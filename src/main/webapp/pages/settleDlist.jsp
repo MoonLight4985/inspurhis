@@ -81,11 +81,11 @@
                             <c:if test="${member.id == costSettleDetail.memberId}">${member.name}</c:if>
                         </c:forEach>
                     </td>
-                    <td>---</td>
+                    <td>${costSettleDetail.registerOrderId}</td>
                     <td>${costSettleDetail.settleAmount}</td>
                     <td>
-                        <c:forEach items="${userList}" var="user">
-                            <c:if test="${user.id == costSettleDetail.userId}">${user.realname}</c:if>
+                        <c:forEach items="${doctorList}" var="doctor">
+                            <c:if test="${doctor.id == costSettleDetail.userId}">${doctor.name}</c:if>
                         </c:forEach>
                     </td><!-- 数据库结构应存储id值 -->
                     <td>${costSettleDetail.createTime}</td>

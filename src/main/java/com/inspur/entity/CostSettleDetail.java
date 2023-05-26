@@ -36,4 +36,6 @@ public class CostSettleDetail implements Serializable {
 
     private String status;
 
+    private String registerOrderId;
+
 }

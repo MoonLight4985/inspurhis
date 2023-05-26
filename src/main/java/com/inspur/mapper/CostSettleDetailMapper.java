@@ -19,7 +19,7 @@ public interface CostSettleDetailMapper{
     @Update("update cost_settle_detail set status = 1, create_time = #{nowDate} where id = #{costSettleDetailId}")
     void finishBySettleId(@Param(value = "costSettleDetailId") String costSettleDetailId, @Param(value = "nowDate") String nowDate);
 
-    @Insert("insert into cost_settle_detail (id, member_id, settle_amount, user_id, create_time, status) values (#{id}, #{memberId}, #{settleAmount}, #{userId}, #{createTime}, #{status})")
+    @Insert("insert into cost_settle_detail (id, member_id, settle_amount, user_id, create_time, status, register_order_id) values (#{id}, #{memberId}, #{settleAmount}, #{userId}, #{createTime}, #{status}, #{registerOrderId})")
     void save(CostSettleDetail costSettleDetail);
 
     @Select("select * from cost_settle_detail where id = #{costSettleDetailId}")

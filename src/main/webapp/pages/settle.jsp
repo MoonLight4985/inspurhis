@@ -78,8 +78,12 @@
                                 <c:if test="${member.id == costSettleDetail.memberId}">${member.name}</c:if>
                             </c:forEach>
                         </td>
-                        <td></td>
-                        <td></td>
+                        <td>${settle.registerOrderId}</td>
+                        <td>
+                            <c:forEach items="${memberList}" var="member">
+                                <c:if test="${member.id == settle.memberId}">${member.balance}</c:if>
+                            </c:forEach>
+                        </td>
                         <td>${settle.settleAmount}</td>
                         <td>
                             <a onclick="settle(${settle.id}, ${settle.settleAmount})"><img src="../images/settle.jpg"

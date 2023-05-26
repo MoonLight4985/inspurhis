@@ -1,11 +1,9 @@
 package com.inspur.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.inspur.entity.CostSettleDetail;
-import com.inspur.entity.Member;
-import com.inspur.entity.QueryExtends;
-import com.inspur.entity.Users;
+import com.inspur.entity.*;
 import com.inspur.service.CostSettleDetailService;
+import com.inspur.service.DoctorService;
 import com.inspur.service.MemberService;
 import com.inspur.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +26,9 @@ public class CostSettleDetailController {
     @Autowired
     private UsersService usersService;
 
+    @Autowired
+    private DoctorService doctorService;
+
     @GetMapping("/list")
     public String getCostSettleDetailList(CostSettleDetail costSettleDetail,
                                           HttpServletRequest request,
@@ -41,6 +42,8 @@ public class CostSettleDetailController {
         PageInfo<CostSettleDetail> pageInfo = costSettleDetailService.getCostSettleDetailByCondition(costSettleDetail, pageNum, pageSize);
         List<Member> allMember = memberService.getAllMember();
         List<Users> allUsers = usersService.getAllUsers();
+        List<Doctor> allDoctor = doctorService.getAllDoctor();
+        request.getSession().setAttribute("doctorList", allDoctor);
         request.getSession().setAttribute("userList", allUsers);
         request.getSession().setAttribute("memberList", allMember);
         request.setAttribute("pageInfo", pageInfo);
@@ -58,6 +61,8 @@ public class CostSettleDetailController {
         costSettleDetail.setStatus("0");
         List<Member> allMember = memberService.getAllMember();
         List<Users> allUsers = usersService.getAllUsers();
+        List<Doctor> allDoctor = doctorService.getAllDoctor();
+        request.getSession().setAttribute("doctorList", allDoctor);
         request.getSession().setAttribute("userList", allUsers);
         request.getSession().setAttribute("memberList", allMember);
         PageInfo<CostSettleDetail> pageInfo = costSettleDetailService.getCostSettleDetailByCondition(costSettleDetail, pageNum, pageSize);

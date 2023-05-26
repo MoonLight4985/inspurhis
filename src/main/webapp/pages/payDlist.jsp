@@ -79,8 +79,8 @@
                     <td>${payment.balance}</td>
                     <td>${payment.rechargeMethod}</td>
                     <td>
-                        <c:forEach items="${userList}" var="user">
-                            <c:if test="${payment.userId == user.id}">${user.username}</c:if>
+                        <c:forEach items="${doctorList}" var="doctor">
+                            <c:if test="${payment.userId == doctor.id}">${doctor.name}</c:if>
                         </c:forEach>
                     </td><!-- 实际存储收款人id：555555 -->
                     <td>${payment.createTime}</td>
