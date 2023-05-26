@@ -31,6 +31,27 @@
             });
         });
     </script>
+    <script>
+        function changeMembers(memberId) {
+            jQuery.ajax({
+                url: "${pageContext.request.contextPath}/registerorder/getOrdersByMemberId?memberId=" + memberId,
+                type: "get",
+                dataType: 'json',
+                success: function (data) {
+                    var selectorOrder = document.getElementById("registerOrderId")
+                    while (selectorOrder.options.length) {
+                        selectorOrder.remove(0)
+                    }
+                    $.each(data, function (index, item) {
+                        // alert(item.name)
+                        var docOption = new Option(item.id, item.id)
+                        // console.log(docOption)
+                        selectorOrder.options.add(docOption)
+                    })
+                }
+            })
+        }
+    </script>
     <style type="text/css">
         body {
             background:#FFF
@@ -48,7 +69,7 @@
                 <table>
                     <tr>
                         <td width="20%" align="right">会员</td>
-                        <td width="20%"><select id="memberId" name="memberId" >
+                        <td width="20%"><select id="memberId" name="memberId" onchange="changeMembers(this.value)">
                             <option value="0">-请选择-</option>
                             <c:forEach items="${memberList}" var="member">
                                 <option value="${member.id}">${member.name}</option>
@@ -59,14 +80,14 @@
                         <td width="50%">
                             <select name="registerOrderId" id="registerOrderId">
                                 <option value="">-请选择-</option>
-                                <c:forEach items="${sessionScope.OrderList}" var="order">
-                                    <option value="${order.id}">
-                                            ${order.id} -
-                                        <c:forEach items="${sessionScope.memberList}" var="member">
-                                            <c:if test="${order.memberId == member.id}">${member.name}</c:if>
-                                        </c:forEach>
-                                    </option>
-                                </c:forEach>
+<%--                                <c:forEach items="${sessionScope.OrderList}" var="order">--%>
+<%--                                    <option value="${order.id}">--%>
+<%--                                            ${order.id} ---%>
+<%--                                        <c:forEach items="${sessionScope.memberList}" var="member">--%>
+<%--                                            <c:if test="${order.memberId == member.id}">${member.name}</c:if>--%>
+<%--                                        </c:forEach>--%>
+<%--                                    </option>--%>
+<%--                                </c:forEach>--%>
                             </select>
                     </tr>
                     <tr>

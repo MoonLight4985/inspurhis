@@ -17,4 +17,6 @@ public interface RegisterOrderService {
     List<RegisterOrder> findAllOrder();
 
     void acOrderById(String registerOrderId);
+
+    List<RegisterOrder> getOrderByMemberId(String memberId);
 }

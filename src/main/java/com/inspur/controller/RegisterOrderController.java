@@ -8,10 +8,7 @@ import com.inspur.service.MemberService;
 import com.inspur.service.RegisterOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -85,5 +82,12 @@ public class RegisterOrderController {
         request.setAttribute("departList", allDepart);
         request.setAttribute("doctorList", allDoctor);
         return "ghadd";
+    }
+
+    @GetMapping("getOrdersByMemberId")
+    @ResponseBody
+    public List<RegisterOrder> getOrdersByMemberId(String memberId) {
+        List<RegisterOrder> registerOrders = registerOrderService.getOrderByMemberId(memberId);
+        return registerOrders;
     }
 }

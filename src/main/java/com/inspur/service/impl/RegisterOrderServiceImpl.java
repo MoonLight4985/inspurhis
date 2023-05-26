@@ -70,4 +70,11 @@ public class RegisterOrderServiceImpl implements RegisterOrderService {
         ordersMapper.acOrderById(registerOrderId);
     }
 
+    @Override
+    public List<RegisterOrder> getOrderByMemberId(String memberId) {
+        RegisterOrder registerOrder = new RegisterOrder();
+        registerOrder.setMemberId(memberId);
+        return ordersMapper.findOrderByCondition(registerOrder);
+    }
+
 }
