@@ -31,6 +31,7 @@ public class MemberController {
     @Autowired
     private PaymentDetailService paymentDetailService;
 
+
     @PostMapping("save")
     public String save(Member member, HttpServletRequest request) {
         Member updateMember = (Member) request.getAttribute("member");
@@ -73,10 +74,19 @@ public class MemberController {
     }
 
     @PostMapping("saveIncrease")
-    public String saveIncrease(Integer money, HttpServletRequest request) {
+    public String saveIncrease(Integer money, String rechargeMethod, HttpServletRequest request) {
         Member member = (Member) request.getSession().getAttribute("czMember");
         member.setBalance(member.getBalance() + money);
-        System.out.println(member);
+        PaymentDetail paymentDetail = new PaymentDetail();
+        SimpleDateFormat formatId = new SimpleDateFormat("yyyyMMddHHmmss");
+        paymentDetail.setId(formatId.format(new Date()));
+        paymentDetail.setRechargeMethod(rechargeMethod);
+        paymentDetail.setRechargeAmount(money);
+        paymentDetail.setMemberId(member.getId());
+        paymentDetail.setBalance(member.getBalance());
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        paymentDetail.setCreateTime(simpleDateFormat.format(new Date()));
+        paymentDetailService.save(paymentDetail);
         boolean b = memberService.saveOrUpdateMember(member);
         return "redirect:/member/list";
     }

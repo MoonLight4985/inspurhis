@@ -66,11 +66,11 @@
                         <td width="20%"><input type="text" id="moneys" name="money" /></td>
                         <td width="10%" align="right">充值方式</td>
                         <td width="50%">
-                            <select id="type" name="type" >
+                            <select id="rechargeMethod" name="rechargeMethod" >
                                 <option value="0">请选择</option>
-                                <option value="1">现金</option>
-                                <option value="2">刷卡</option>
-                                <option value="3">扫码支付</option>
+                                <option value="现金">现金</option>
+                                <option value="刷卡">刷卡</option>
+                                <option value="扫码支付">扫码支付</option>
                             </select>
                         </td>
                     </tr>
