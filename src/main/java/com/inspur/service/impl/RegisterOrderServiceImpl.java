@@ -2,8 +2,11 @@ package com.inspur.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.inspur.entity.Member;
 import com.inspur.entity.RegisterOrder;
+import com.inspur.mapper.MemberMapper;
 import com.inspur.mapper.RegisterOrderMapper;
+import com.inspur.service.MemberService;
 import com.inspur.service.RegisterOrderService;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +21,18 @@ public class RegisterOrderServiceImpl implements RegisterOrderService {
     @Autowired
     private RegisterOrderMapper ordersMapper;
 
+    @Autowired
+    private MemberMapper memberMapper;
+
     @Override
     public boolean saveOrUpdateOrder(RegisterOrder orders) {
         String ordersId = orders.getId();
+        String memberId = orders.getMemberId();
+        Double price = orders.getPrice();
+        // 挂号扣钱
+        Member memberById = memberMapper.findMemberById(memberId);
+        memberById.setBalance((int) (memberById.getBalance() - price));
+        memberMapper.update(memberById);
         if (ordersId == null || ordersId.equals("")) {
             return save(orders);
         } else {

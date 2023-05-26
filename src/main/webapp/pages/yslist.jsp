@@ -87,7 +87,7 @@
             <th width="">联系电话</th>
             <th width="">年龄</th>
             <th width="">性别</th>
-            <th width="">家庭住址</th>
+<%--            <th width="">家庭住址</th>--%>
             <th width="10%">操作</th>
             </thead>
             <tbody>
@@ -106,7 +106,7 @@
                     <td>${doctor.tel}</td>
                     <td>${doctor.age}</td>
                     <td>${doctor.sex}</td>
-                    <td>山东济南历城区</td>
+<%--                    <td>山东济南历城区</td>--%>
                     <td>
                         <a onclick="modify(${doctor.id})"><img src="../images/icon/edit.png" width="16"
                                                                height="16"/></a>

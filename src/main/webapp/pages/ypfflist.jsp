@@ -62,9 +62,10 @@
         <thead>
         <th width="">挂号号</th>
         <th width="">会员ID</th>
+        <th width="">药品</th>
         <th width="">诊断人</th>
         <th width="">诊断时间</th>
-        <th width="10%">开药信息</th>
+        <th width="10%">发放药品</th>
         </thead>
         <tbody>
         <c:forEach items="${pageInfo.list}" var="prescribe">
@@ -73,6 +74,11 @@
             <td>
                 <c:forEach items="${memberList}" var="member">
                   <c:if test="${prescribe.memberId == member.id}">${member.name}</c:if>
+                </c:forEach>
+            </td>
+            <td>
+                <c:forEach items="${sessionScope.medicineList}" var="medicine">
+                  <c:if test="${prescribe.medicineId == medicine.id}">${medicine.name}</c:if>
                 </c:forEach>
             </td>
             <td>

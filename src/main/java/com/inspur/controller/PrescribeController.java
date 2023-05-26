@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import javax.print.Doc;
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -79,6 +78,8 @@ public class PrescribeController {
         PageInfo<Prescribe> pageInfo = prescribeService.getPrescribeListByCondition(prescribe, pageNum, pageSize);
         List<Member> allMember = memberService.getAllMember();
         List<Doctor> allDoctor = doctorService.getAllDoctor();
+        List<Medicine> allMedicine = medicineService.getAllMedicine();
+        request.getSession().setAttribute("medicineList", allMedicine);
         request.getSession().setAttribute("memberList", allMember);
         request.getSession().setAttribute("doctorList", allDoctor);
         request.setAttribute("pageInfo", pageInfo);

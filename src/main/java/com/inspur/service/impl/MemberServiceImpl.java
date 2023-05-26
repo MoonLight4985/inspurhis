@@ -31,6 +31,7 @@ public class MemberServiceImpl implements MemberService {
     boolean save(Member members) {
         String id = new DateTime().toString("yyyyMMddHHmmss");
         members.setId(id);
+        members.setRole("3");
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
         members.setCreateTime(simpleDateFormat.format(new Date()));
         return membersMapper.save(members) > 0;

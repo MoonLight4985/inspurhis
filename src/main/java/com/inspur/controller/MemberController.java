@@ -35,7 +35,6 @@ public class MemberController {
     @PostMapping("save")
     public String save(Member member, HttpServletRequest request) {
         Member updateMember = (Member) request.getAttribute("member");
-        System.out.println("cang" + member);
         if (updateMember != null) {
             member.setId(updateMember.getId());
         }

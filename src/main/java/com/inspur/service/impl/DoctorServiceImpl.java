@@ -30,6 +30,7 @@ public class DoctorServiceImpl implements DoctorService {
     boolean save(Doctor doctors) {
         String id = new DateTime().toString("yyyyMMddHHmmss");
         doctors.setId(id);
+        doctors.setRole("2");
         doctors.setCreateTime(new Date());
         return doctorsMapper.save(doctors) > 0;
     }

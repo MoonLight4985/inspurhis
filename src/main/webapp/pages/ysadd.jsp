@@ -89,12 +89,12 @@
                         <td align="right">性别</td>
                         <td><input type="text" id="sex" name="sex" value="${sex}"/></td>
                     </tr>
-                    <tr>
-                        <td align="right">家庭住址</td>
-                        <td><input type="text" id="address" name="address"/></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+<%--                    <tr>--%>
+<%--                        <td align="right">家庭住址</td>--%>
+<%--                        <td><input type="text" id="address" name="address"/></td>--%>
+<%--                        <td></td>--%>
+<%--                        <td></td>--%>
+<%--                    </tr>--%>
                     <tr>
                         <td colspan="4" align="center"><input type="submit" value="确定"/></td>
                     </tr>
